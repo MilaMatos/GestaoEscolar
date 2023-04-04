@@ -62,8 +62,6 @@ public class MenuInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeActionPerformed
-        Pessoa teste = new Pessoa();
-        teste.nome = campoNome.getText();
         // TODO add your handling code here:
     }//GEN-LAST:event_campoNomeActionPerformed
 

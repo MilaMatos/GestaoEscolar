@@ -5,4 +5,13 @@ public class Aluno extends Pessoa{
     double notas[][];
     boolean carne[];
     
+
+
+    String exibir(){
+        System.out.println("");
+        System.out.println("Nome: "+nome);
+        System.out.println("Idade: "+idade);
+        System.out.println("Mensalidade: "+mensalidade);
+        return nome;
+    }
 }
