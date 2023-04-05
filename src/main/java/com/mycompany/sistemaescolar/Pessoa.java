@@ -1,9 +1,11 @@
 package com.mycompany.sistemaescolar;
 
 public abstract class Pessoa {
-    String nome;
+    protected String nome;
     Endereco endereço;
     int nascimento;
-    int idade;
+    protected int idade;
+    String genero;
+    String contato;
     
 }

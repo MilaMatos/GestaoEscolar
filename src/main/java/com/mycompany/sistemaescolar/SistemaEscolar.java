@@ -20,34 +20,35 @@ public class SistemaEscolar {
             System.out.println("\n\n----- Escolha uma das opções abaixo -----");
             System.out.println("1 - Cadastra pessoas");
             System.out.println("2 - Exibir lista de alunos");
+            System.out.println("3 - Pesquisar por nome");
             System.out.println("Outros - Sair do programa");
             System.out.println("-----------------------------------------");
 
             System.out.print("Digite aqui sua opção: ");
             opcao = Integer.parseInt(ler.nextLine());
 
-            if(opcao == 1){
+            if(opcao == 1){                                     //cadastrar pessoas
                 while(opcao != 0){
 
-                Aluno teste = new Aluno();
+                Aluno cadastro = new Aluno();                      //criando um aluno 
                 System.out.print("Nome completo: ");
                 String nome = ler.nextLine();
                 if(nome.intern() == sair){break;}
-                else teste.nome = nome;
+                else cadastro.nome = nome;
 
                 System.out.print("Idade: ");
                 int idade = ler.nextInt();
                 ler.nextLine(); 
-                teste.idade = idade;
+                cadastro.idade = idade;
 
                 System.out.print("Valor da mensalidade: ");
                 Double mensalidade = ler.nextDouble();
                 ler.nextLine(); 
-                teste.mensalidade = mensalidade;
+                cadastro.mensalidade = mensalidade;
 
 
                 System.out.println("\n");
-                lista.add(teste);
+                lista.add(cadastro);
                 } 
             }
 
@@ -66,13 +67,29 @@ public class SistemaEscolar {
                 }
             }
 
-            else break;
+            else if (opcao == 3){
+                System.out.print("Nome: ");
+                String pes = ler.nextLine(); 
 
+                boolean pesquisar = false;
+
+			    for (int i = 0; i < lista.size(); i++) {
+                    Aluno aux = (Aluno)lista.get(i);
+                    if (aux.nome.equals(pes)) {
+                        aux.exibir();
+                        pesquisar = true;
+                    }
+			    }
+
+                if (!pesquisar) {
+                    System.out.println("Nao achei o nome: " + pes + " no cadastro.");
+                }
+
+                else break;
+            }
 
         }
-                
-       // new MenuInicial().setVisible(true);
-       // System.out.println("Menu inicial inicializado");
+
         ler.close();
     }
 }
