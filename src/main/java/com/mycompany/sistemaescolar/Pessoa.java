@@ -6,8 +6,6 @@ public abstract class Pessoa {
     protected int idade;
     protected String genero;
     protected String contato;
-
-    Endereco endereço;
-    
+    protected Endereco endereço;
     
 }

@@ -1,6 +1,6 @@
 package com.mycompany.sistemaescolar;
 
 public class Financeiro {
-    double receita;
-    double deslesas;
+    private double receita;
+    private double despesas;
 }
