@@ -1,11 +1,8 @@
 package com.mycompany.sistemaescolar;
-//import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class SistemaEscolar {
-
     public static void main(String[] args) {
         
         ArrayList<Aluno> lista = new ArrayList<>();
@@ -85,7 +82,10 @@ public class SistemaEscolar {
                     System.out.println("Nao achei o nome: " + pes + " no cadastro.");
                 }
 
-                else break;
+                else {
+                    menu = 1;
+                    break;
+                }
             }
 
         }
