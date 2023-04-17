@@ -20,7 +20,7 @@ public class Aluno extends Pessoa{
         
     }   //Construtor completo
     
-    void mostraDetalhesAluno(){
+    public void mostraDetalhesAluno(){
         System.out.println("--------Detalhes do aluno--------");
         System.out.println("Nome: "+nome);
         System.out.println("Data de nascimento: "+dataNascimento);
