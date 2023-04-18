@@ -4,6 +4,19 @@ public class Financeiro {
     private double receita;
     private double despesas;
     
+    public double getReceita() {
+        return receita;
+    }
+    public void setReceita(double receita) {
+        this.receita = receita;
+    }
+    public double getDespesas() {
+        return despesas;
+    }
+    public void setDespesas(double despesas) {
+        this.despesas = despesas;
+    }
+    
     public Financeiro(){
         this.receita = 0;
         this.despesas = 0;
