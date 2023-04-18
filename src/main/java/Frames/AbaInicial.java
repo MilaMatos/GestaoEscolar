@@ -1,8 +1,5 @@
 package Frames;
-
 import com.mycompany.sistemaescolar.Financeiro;
-
-
 
 public class AbaInicial extends javax.swing.JFrame {
     Financeiro financeiro;
@@ -189,39 +186,30 @@ public class AbaInicial extends javax.swing.JFrame {
         CadastroAluno aba = new CadastroAluno(financeiro);
         aba.setVisible(true);
     }                                               
-
     private void jMenuItemPesAluActionPerformed(java.awt.event.ActionEvent evt) {                                                
         // TODO add your handling code here:
     }                                               
-
     private void jMenuItemNotasAluActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         // TODO add your handling code here:
     }                                                 
-
     private void jMenuItemPesFunActionPerformed(java.awt.event.ActionEvent evt) {                                                
         // TODO add your handling code here:
     }                                               
- 
     private void jMenuItemRecFinActionPerformed(java.awt.event.ActionEvent evt) {                                                
         // TODO add your handling code here:
     }                                               
-
     private void jMenuItemDesFinActionPerformed(java.awt.event.ActionEvent evt) {                                                
         // TODO add your handling code here:
-    }                                               
-
+    }                                              
     private void jMenuItemCadFunActionPerformed(java.awt.event.ActionEvent evt) {                                                
         // TODO add your handling code here:
     }                                               
-
     private void jMenuItemProfFunActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
     }                                                
-
     private void jMenuItemMenFinActionPerformed(java.awt.event.ActionEvent evt) {                                                
         // TODO add your handling code here:
     }                                               
-
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {                                            
         System.exit(0);
     }                                           
