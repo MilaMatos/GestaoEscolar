@@ -20,22 +20,64 @@ public class Aluno extends Pessoa{
         
     }   //Construtor completo
     
+    public double getMensalidade() {
+        return mensalidade;
+    }
+    public void setMensalidade(double mensalidade) {
+        this.mensalidade = mensalidade;
+    }
+
+    public double getNotas() {
+        return notas;
+    }
+    public void setNotas(double notas) {
+        this.notas = notas;
+    }
+
+    public boolean getCarne() {
+        return carne;
+    }
+    public void setCarne(boolean carne) {
+        this.carne = carne;
+    }
+    
+    public int getMatricula() {
+        return matricula;
+    }
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+
+    public String getResponsavel() {
+        return responsavel;
+    }
+    public void setResponsavel(String responsavel) {
+        this.responsavel = responsavel;
+    }
+
+    public String getSerie() {
+        return serie;
+    }
+    public void setSerie(String serie) {
+        this.serie = serie;
+    }
+
     public void mostraDetalhesAluno(){
         System.out.println("--------Detalhes do aluno--------");
-        System.out.println("Nome: "+nome);
-        System.out.println("Data de nascimento: "+dataNascimento);
-        System.out.println("Gênero: "+genero);
-        System.out.println("Número de contato: "+contato);  
-        System.out.println("Número da matrícula: "+matricula);
-        System.out.println("Responsável: "+responsavel);
-        System.out.println("Série: "+serie);
-        System.out.println("Valor da mensalidade: R$ "+mensalidade);
+        System.out.println("Nome: "+getNome());
+        System.out.println("Data de nascimento: "+getDataNascimento());
+        System.out.println("Gênero: "+getGenero());
+        System.out.println("Número de contato: "+getContato());  
+        System.out.println("Número da matrícula: "+getMatricula());
+        System.out.println("Responsável: "+getResponsavel());
+        System.out.println("Série: "+getSerie());
+        System.out.println("Valor da mensalidade: R$ "+getMensalidade());
         System.out.println("---Endereço--- ");
-        System.out.println("Cidade: "+cidade);
-        System.out.println("Rua: "+rua);
-        System.out.println("Nº: "+numero);
-        System.out.println("Bairro: "+bairro);
-        System.out.println("Complemento: "+complemento);
-        System.out.println("CEP: "+cep);
+        System.out.println("Cidade: "+getCidade());
+        System.out.println("Rua: "+getRua());
+        System.out.println("Nº: "+getNumero());
+        System.out.println("Bairro: "+getBairro());
+        System.out.println("Complemento: "+getComplemento());
+        System.out.println("CEP: "+getCep());
     }
 }
