@@ -1,4 +1,4 @@
-package com.mycompany.sistemaescolar;
+package Classes;
 
 public class Endereco {
     private String rua;

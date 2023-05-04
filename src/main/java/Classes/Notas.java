@@ -1,4 +1,4 @@
-package com.mycompany.sistemaescolar;
+package Classes;
 
 public class Notas {
     double matematica;
@@ -28,11 +28,5 @@ public class Notas {
         System.out.println("Geografia: "+geografia);
         System.out.println("Artes: "+artes);
         System.out.println("Educação Física: "+edFisica);
-        System.out.println("Média: "+mediaBimestre());
-    }
-
-    double mediaBimestre(){
-        this.media = (this.matematica + this.portugues + this.ciencias + this.historia + this.geografia + this.artes + this.edFisica)/7;
-        return this.media;
-    }    
+    }  
 }
