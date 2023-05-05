@@ -1,4 +1,5 @@
 package Frames;
+import Classes.Aluno;
 import Classes.Financeiro;
 
 public class AbaInicial extends javax.swing.JFrame {
@@ -185,8 +186,7 @@ public class AbaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCadAluActionPerformed
 
     private void jMenuItemPesAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesAluActionPerformed
-        //Aluno a = new Aluno("Ra", "15/02/2003", "feminino", "(88) 992325912", "Monsenhor Fco de Assis Feitosa", 381, "Centro", "Casa", "Crato", "63100-360", 1, "Ronilce", "1º ano", 350, financeiro);
-        //PesquisarAluno aba2 = new PesquisarAluno(a);
+        //POR A ABA PRA PESQUISAR O ALUNO - O EXIBIR JA TA PRONTO
     }//GEN-LAST:event_jMenuItemPesAluActionPerformed
 
     private void jMenuItemNotasAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNotasAluActionPerformed

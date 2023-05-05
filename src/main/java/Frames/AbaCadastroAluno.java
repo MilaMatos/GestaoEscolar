@@ -182,7 +182,7 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
         tResponsavel.setText("Responsável:");
 
         tEndereco.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tEndereco.setText("Endereço:");
+        tEndereco.setText("Rua:");
 
         campDataN.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         campDataN.addActionListener(new java.awt.event.ActionListener() {
