@@ -2,7 +2,9 @@ package Frames;
 
 import Classes.Aluno;
 import Classes.Financeiro;
+import java.awt.Color;
 import javax.swing.JOptionPane;
+import java.util.Arrays;
 
 public class AbaCadastroAluno extends javax.swing.JFrame {
     Financeiro financeiro;
@@ -56,6 +58,7 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
         campSerie = new javax.swing.JComboBox<>();
         campDataN = new javax.swing.JFormattedTextField();
         campContato = new javax.swing.JFormattedTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -138,34 +141,30 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
                             .addGroup(panelEnderecoLayout.createSequentialGroup()
                                 .addComponent(jCidade)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(campCidade))
                             .addGroup(panelEnderecoLayout.createSequentialGroup()
                                 .addComponent(jBairro)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campBairro)))
-                        .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelEnderecoLayout.createSequentialGroup()
-                                .addGap(117, 117, 117)
-                                .addComponent(jCep)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campCep, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelEnderecoLayout.createSequentialGroup()
-                                .addGap(149, 149, 149)
-                                .addComponent(campN, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEnderecoLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(campBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(117, 117, 117)
                         .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(panelEnderecoLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jNum))
-                            .addGroup(panelEnderecoLayout.createSequentialGroup()
-                                .addComponent(jRua)
+                                .addComponent(jNum)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campEndereco)
-                                .addGap(9, 9, 9)
-                                .addComponent(jComplemento)))
+                                .addComponent(campN, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelEnderecoLayout.createSequentialGroup()
+                                .addComponent(jCep)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campCep, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEnderecoLayout.createSequentialGroup()
+                        .addComponent(jRua)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campEndereco)
+                        .addGap(9, 9, 9)
+                        .addComponent(jComplemento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
         panelEnderecoLayout.setVerticalGroup(
             panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,19 +176,21 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
                     .addComponent(jCep)
                     .addComponent(campCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBairro)
-                    .addComponent(campBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jNum)
-                        .addComponent(campN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(campN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jBairro)
+                        .addComponent(campBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComplemento)
+                .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jRua)
-                        .addComponent(campEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(campEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(campComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComplemento)))
                 .addContainerGap())
         );
 
@@ -209,11 +210,20 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        tNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tNome.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        tNome.setForeground(new java.awt.Color(150, 20, 20));
         tNome.setText("Nome:");
+        tNome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tNomeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                tNomeMouseExited(evt);
+            }
+        });
 
         campGenero.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        campGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Feminino", "Masculino", "" }));
+        campGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Feminino", "Masculino", "Selecione" }));
         campGenero.setSelectedIndex(2);
         campGenero.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         campGenero.addActionListener(new java.awt.event.ActionListener() {
@@ -222,7 +232,8 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        tData.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tData.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        tData.setForeground(new java.awt.Color(150, 20, 20));
         tData.setText("Data de nascimento:");
 
         tGenero.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -231,14 +242,16 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
         tContato.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tContato.setText("Contato:");
 
-        tSerie.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tSerie.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        tSerie.setForeground(new java.awt.Color(150, 20, 20));
         tSerie.setText("Série:");
 
-        tResponsavel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tResponsavel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        tResponsavel.setForeground(new java.awt.Color(150, 20, 20));
         tResponsavel.setText("Responsável:");
 
         campSerie.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        campSerie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1º ANO", "2º ANO", "3º ANO", "4ºANO", "5º ANO", "" }));
+        campSerie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1º ANO", "2º ANO", "3º ANO", "4º ANO", "5º ANO", "Selecione" }));
         campSerie.setSelectedIndex(5);
         campSerie.setMinimumSize(new java.awt.Dimension(63, 22));
         campSerie.setPreferredSize(new java.awt.Dimension(65, 22));
@@ -289,7 +302,7 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
                                 .addComponent(tGenero)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(campGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                         .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfoLayout.createSequentialGroup()
                                 .addComponent(tData)
@@ -331,43 +344,51 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
                 .addGap(46, 46, 46))
         );
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(150, 20, 20));
+        jLabel1.setText("Campo obrigatório");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTitulo)
+                .addGap(173, 173, 173))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jTitulo)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(buttonConfirmar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonVoltar)
-                        .addContainerGap())))
+                        .addComponent(buttonVoltar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonVoltar)
-                    .addComponent(buttonConfirmar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(buttonConfirmar)
+                    .addComponent(buttonVoltar))
+                .addContainerGap())
         );
 
         pack();
@@ -389,8 +410,44 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
     }
     
     private boolean verificaNull(){
+        if(campNome.getText().isBlank() || (campSerie.getSelectedIndex() == 5 || campResponsavel.getText().isBlank()) || campDataN.getText().isBlank()){
+            return false;}
+        else return true;
+    }
     
-        return false;
+    private boolean validarIdade(){
+        String data = campDataN.getText();
+        String serie = campSerie.getItemAt(campSerie.getSelectedIndex());
+        
+        String[] result = data.split("/");
+        int ano = Integer.parseInt(result[2]);
+        int mes = Integer.parseInt(result[1]);
+        
+        if(null != serie) switch (serie) {
+            case "1º ANO":
+                if(ano > 2017) return false;
+                if(ano == 2017 && mes > 3) return false;
+                break;
+            case "2º ANO":
+                if(ano > 2016) return false;
+                if(ano == 2016 && mes > 3) return false;
+                break;
+            case "3º ANO":
+                if(ano > 2015) return false;
+                if(ano == 2015 && mes > 3) return false;
+                break;
+            case "4º ANO":
+                if(ano > 2014) return false;
+                if(ano == 2014 && mes > 3) return false;
+                break;
+            case "5º ANO":
+                if(ano > 2013) return false;
+                if(ano == 2013 && mes > 3) return false;
+                break;
+            default:
+                break;
+        } 
+        return true;
     }
     
     
@@ -398,22 +455,20 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
     private void buttonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConfirmarActionPerformed
         String serie = campSerie.getItemAt(campSerie.getSelectedIndex()); //Como pegar a string selecionada com a listinha
         String genero = campGenero.getItemAt(campGenero.getSelectedIndex());
-        
         double mensalidade = financeiro.verificaMensalidade(serie);
-        
-        if(campNome.getText().isBlank()){
-            JOptionPane.showMessageDialog(this, "Campo Nome está vazio");
+        int numero = 0;
+        if(campN.getText().isBlank()){
+            numero = -1;
         }
         
-        Aluno rayssaPires = new Aluno(campNome.getText(), campDataN.getText(), genero, campContato.getText(), campEndereco.getText(), Integer.parseInt(campN.getText()), campBairro.getText(), campComplemento.getText(), campCidade.getText(), campCep.getText(), 2022150, campResponsavel.getText(), serie, mensalidade, financeiro);
-
-        setNull();
-
-        //Desnecessário
-        rayssaPires.mostraDetalhesAluno();
-        financeiro.mostrarTotal();
-        //Desnecessário
-        
+        if(this.verificaNull()){
+            if(this.validarIdade()){
+                Aluno rayssaPires = new Aluno(campNome.getText(), campDataN.getText(), genero, campContato.getText(), campEndereco.getText(),numero , campBairro.getText(), campComplemento.getText(), campCidade.getText(), campCep.getText(), 2022150, campResponsavel.getText(), serie, mensalidade, financeiro);
+                setNull();            
+            }
+            else JOptionPane.showMessageDialog(this, "O aluno é muito novo para cursar " +serie);
+        }
+        else JOptionPane.showMessageDialog(this, "Campo obrigatório em branco");
     }//GEN-LAST:event_buttonConfirmarActionPerformed
 
     private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
@@ -447,6 +502,14 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
     private void campDataNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campDataNActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campDataNActionPerformed
+
+    private void tNomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tNomeMouseEntered
+        tNome.setForeground(Color.red);
+    }//GEN-LAST:event_tNomeMouseEntered
+
+    private void tNomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tNomeMouseExited
+        tNome.setForeground(Color.black);
+    }//GEN-LAST:event_tNomeMouseExited
 
     /**
      * @param args the command line arguments
@@ -502,6 +565,7 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
     private javax.swing.JLabel jCep;
     private javax.swing.JLabel jCidade;
     private javax.swing.JLabel jComplemento;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jNum;
     private javax.swing.JLabel jRua;
     private javax.swing.JLabel jTitulo;

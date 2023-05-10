@@ -98,7 +98,10 @@ public class AbaExibirAluno extends javax.swing.JFrame {
 
         jLabel7.setText(aluno.getRua());
 
-        jLabel8.setText(Integer.toString(aluno.getNumero())
+        if(aluno.getNumero() == -1){
+            jLabel8.setText("");
+        }
+        else jLabel8.setText(Integer.toString(aluno.getNumero())
         );
 
         jLabel9.setText(aluno.getCep());

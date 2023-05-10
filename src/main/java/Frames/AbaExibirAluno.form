@@ -237,9 +237,12 @@
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Integer.toString(aluno.getNumero())&#xd;&#xa;" type="code"/>
+              <Connection code="&quot;&quot;);&#xa;}&#xa;else jLabel8.setText(Integer.toString(aluno.getNumero())&#xa;    " type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="if(aluno.getNumero() == -1){"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>

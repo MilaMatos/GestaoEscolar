@@ -62,7 +62,6 @@ public class Aluno extends Pessoa{
     public void setCarne(boolean carne) {
         this.carne = carne;
     }
-    //O erro é ate aqui - notas e carne
     
     public void editarAluno(String nome, String dataNascimento, String genero, String contato, String rua, int numero, String bairro, String complemento, String cidade, String cep, String responsavel, String serie){
         this.setNome(nome);
@@ -70,7 +69,6 @@ public class Aluno extends Pessoa{
         this.setContato(contato);
         this.setGenero(genero);
         this.setSerie(serie);
-       
         this.setResponsavel(responsavel);
         this.setCidade(cidade);
         this.setCep(cep);
