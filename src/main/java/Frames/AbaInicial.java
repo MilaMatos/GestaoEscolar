@@ -147,6 +147,11 @@ public class AbaInicial extends javax.swing.JFrame {
         menuFinanceiro.add(jMenuItemDesFin);
 
         jMenuItemRelFin.setText("Relatório");
+        jMenuItemRelFin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRelFinActionPerformed(evt);
+            }
+        });
         menuFinanceiro.add(jMenuItemRelFin);
 
         jMenuBar2.add(menuFinanceiro);
@@ -198,8 +203,7 @@ public class AbaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemNotasAluActionPerformed
 
     private void jMenuItemCadFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadFunActionPerformed
-        AbaCadastroFuncionario abaCadastroFuncionario = new AbaCadastroFuncionario(financeiro);
-        abaCadastroFuncionario.setVisible(true);
+        new Frames.AbaCadastroFuncionario(financeiro).setVisible(true);
     }//GEN-LAST:event_jMenuItemCadFunActionPerformed
 
     private void jMenuItemPesFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesFunActionPerformed
@@ -225,6 +229,10 @@ public class AbaInicial extends javax.swing.JFrame {
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButtonSairActionPerformed
+
+    private void jMenuItemRelFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelFinActionPerformed
+        new Frames.AbaRelatorioFinanceiro(financeiro).setVisible(true);
+    }//GEN-LAST:event_jMenuItemRelFinActionPerformed
 
     /**
      * @param args the command line arguments

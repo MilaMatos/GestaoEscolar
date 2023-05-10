@@ -39,8 +39,8 @@ public class Financeiro {
         this.despesas += despesa;
     }
     
-       public void mostrarTotal(){
-        System.out.println("Total de financeiro: " + (receita-despesas));
+    public double getTotal(){
+        return (receita-despesas);
     }
     
     public void mostrarDespesas(){
