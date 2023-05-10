@@ -9,6 +9,15 @@ public class Financeiro {
         this.despesas = 0;
     }
     
+    public double verificaMensalidade(String serie){
+        if(serie == "1º ANO") return 100;
+        if(serie == "2º ANO") return 200;
+        if(serie == "3º ANO") return 300;
+        if(serie == "4º ANO") return 400;
+        if(serie == "5º ANO") return 500;
+        return 0;
+    }
+    
     public double getReceita() {
         return receita;
     }

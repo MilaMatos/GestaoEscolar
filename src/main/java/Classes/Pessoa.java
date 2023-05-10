@@ -105,5 +105,9 @@ public abstract class Pessoa {
     public void setCep(String cep) {
         this.cep = cep;
     }
+    
+    public boolean isNomeIgual(String outraPalavra) {
+        return nome.equals(outraPalavra);
+    }
 
 }

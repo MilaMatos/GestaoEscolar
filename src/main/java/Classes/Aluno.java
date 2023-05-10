@@ -64,6 +64,22 @@ public class Aluno extends Pessoa{
     }
     //O erro é ate aqui - notas e carne
     
+    public void editarAluno(String nome, String dataNascimento, String genero, String contato, String rua, int numero, String bairro, String complemento, String cidade, String cep, String responsavel, String serie){
+        this.setNome(nome);
+        this.setDataNascimento(dataNascimento);
+        this.setContato(contato);
+        this.setGenero(genero);
+        this.setSerie(serie);
+       
+        this.setResponsavel(responsavel);
+        this.setCidade(cidade);
+        this.setCep(cep);
+        this.setRua(rua);
+        this.setBairro(bairro);
+        this.setNumero(numero);
+        this.setComplemento(complemento);
+    }
+    
     //Fim dos Gets e Sets
     
      public void mostraDetalhesAluno(){

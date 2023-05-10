@@ -2,6 +2,7 @@ package Frames;
 
 import Classes.Aluno;
 import Classes.Financeiro;
+import javax.swing.JOptionPane;
 
 public class AbaCadastroAluno extends javax.swing.JFrame {
     Financeiro financeiro;
@@ -26,45 +27,215 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tBairro = new javax.swing.JLabel();
-        campBairro = new javax.swing.JTextField();
-        tSerie = new javax.swing.JLabel();
-        campSerie = new javax.swing.JComboBox<>();
         buttonConfirmar = new javax.swing.JButton();
-        tMensalidade = new javax.swing.JLabel();
-        campGenero = new javax.swing.JComboBox<>();
-        campMensalidade = new javax.swing.JTextField();
-        tCep = new javax.swing.JLabel();
-        campCep = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        tNome = new javax.swing.JLabel();
-        campNome = new javax.swing.JTextField();
-        tData = new javax.swing.JLabel();
-        tComplemento = new javax.swing.JLabel();
-        campN = new javax.swing.JTextField();
-        campEndereco = new javax.swing.JTextField();
+        jTitulo = new javax.swing.JLabel();
         buttonVoltar = new javax.swing.JButton();
-        tGenero = new javax.swing.JLabel();
-        tCidade = new javax.swing.JLabel();
-        tContato = new javax.swing.JLabel();
+        panelEndereco = new javax.swing.JPanel();
+        jRua = new javax.swing.JLabel();
+        jCidade = new javax.swing.JLabel();
+        jCep = new javax.swing.JLabel();
         campCidade = new javax.swing.JTextField();
-        campContato = new javax.swing.JTextField();
-        campResponsavel = new javax.swing.JTextField();
-        tResponsavel = new javax.swing.JLabel();
-        tEndereco = new javax.swing.JLabel();
-        campDataN = new javax.swing.JTextField();
-        tNumero = new javax.swing.JLabel();
+        campEndereco = new javax.swing.JTextField();
+        jBairro = new javax.swing.JLabel();
+        campBairro = new javax.swing.JTextField();
         campComplemento = new javax.swing.JTextField();
+        jComplemento = new javax.swing.JLabel();
+        campCep = new javax.swing.JFormattedTextField();
+        campN = new javax.swing.JTextField();
+        jNum = new javax.swing.JLabel();
+        panelInfo = new javax.swing.JPanel();
+        campNome = new javax.swing.JTextField();
+        campResponsavel = new javax.swing.JTextField();
+        tNome = new javax.swing.JLabel();
+        campGenero = new javax.swing.JComboBox<>();
+        tData = new javax.swing.JLabel();
+        tGenero = new javax.swing.JLabel();
+        tContato = new javax.swing.JLabel();
+        tSerie = new javax.swing.JLabel();
+        tResponsavel = new javax.swing.JLabel();
+        campSerie = new javax.swing.JComboBox<>();
+        campDataN = new javax.swing.JFormattedTextField();
+        campContato = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tBairro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tBairro.setText("Bairro:");
+        buttonConfirmar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        buttonConfirmar.setText("Confirmar");
+        buttonConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonConfirmarActionPerformed(evt);
+            }
+        });
+
+        jTitulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jTitulo.setText("Cadastro");
+        jTitulo.setFocusable(false);
+        jTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        buttonVoltar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        buttonVoltar.setText("Voltar");
+        buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonVoltarActionPerformed(evt);
+            }
+        });
+
+        panelEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+
+        jRua.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jRua.setText("Rua:");
+
+        jCidade.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jCidade.setText("Cidade:");
+
+        jCep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jCep.setText("CEP:");
+
+        campCidade.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        campCidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campCidadeActionPerformed(evt);
+            }
+        });
+
+        campEndereco.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        campEndereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campEnderecoActionPerformed(evt);
+            }
+        });
+
+        jBairro.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jBairro.setText("Bairro:");
 
         campBairro.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
 
+        campComplemento.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+
+        jComplemento.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jComplemento.setText("Complemento:");
+
+        try {
+            campCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        campN.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+
+        jNum.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jNum.setText("Nº:");
+
+        javax.swing.GroupLayout panelEnderecoLayout = new javax.swing.GroupLayout(panelEndereco);
+        panelEndereco.setLayout(panelEnderecoLayout);
+        panelEnderecoLayout.setHorizontalGroup(
+            panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEnderecoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEnderecoLayout.createSequentialGroup()
+                        .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelEnderecoLayout.createSequentialGroup()
+                                .addComponent(jCidade)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelEnderecoLayout.createSequentialGroup()
+                                .addComponent(jBairro)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campBairro)))
+                        .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelEnderecoLayout.createSequentialGroup()
+                                .addGap(117, 117, 117)
+                                .addComponent(jCep)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campCep, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelEnderecoLayout.createSequentialGroup()
+                                .addGap(149, 149, 149)
+                                .addComponent(campN, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEnderecoLayout.createSequentialGroup()
+                        .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelEnderecoLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jNum))
+                            .addGroup(panelEnderecoLayout.createSequentialGroup()
+                                .addComponent(jRua)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campEndereco)
+                                .addGap(9, 9, 9)
+                                .addComponent(jComplemento)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelEnderecoLayout.setVerticalGroup(
+            panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEnderecoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCidade)
+                    .addComponent(campCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCep)
+                    .addComponent(campCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBairro)
+                    .addComponent(campBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jNum)
+                        .addComponent(campN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComplemento)
+                    .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jRua)
+                        .addComponent(campEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+
+        panelInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informações Pessoais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+
+        campNome.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        campNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campNomeActionPerformed(evt);
+            }
+        });
+
+        campResponsavel.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        campResponsavel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campResponsavelActionPerformed(evt);
+            }
+        });
+
+        tNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tNome.setText("Nome:");
+
+        campGenero.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        campGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Feminino", "Masculino", "" }));
+        campGenero.setSelectedIndex(2);
+        campGenero.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        campGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campGeneroActionPerformed(evt);
+            }
+        });
+
+        tData.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tData.setText("Data de nascimento:");
+
+        tGenero.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tGenero.setText("Gênero:");
+
+        tContato.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tContato.setText("Contato:");
+
         tSerie.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tSerie.setText("Série:");
+
+        tResponsavel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tResponsavel.setText("Responsável:");
 
         campSerie.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         campSerie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1º ANO", "2º ANO", "3º ANO", "4ºANO", "5º ANO", "" }));
@@ -77,272 +248,132 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        buttonConfirmar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        buttonConfirmar.setText("Confirmar");
-        buttonConfirmar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonConfirmarActionPerformed(evt);
-            }
-        });
-
-        tMensalidade.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tMensalidade.setText("Mensalidade:");
-
-        campGenero.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        campGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Feminino", "Masculino", "" }));
-        campGenero.setSelectedIndex(2);
-        campGenero.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        campGenero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campGeneroActionPerformed(evt);
-            }
-        });
-
-        campMensalidade.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        campMensalidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campMensalidadeActionPerformed(evt);
-            }
-        });
-
-        tCep.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tCep.setText("CEP:");
-
-        campCep.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("Cadastro");
-        jLabel1.setFocusable(false);
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        tNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tNome.setText("Nome:");
-
-        campNome.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        campNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campNomeActionPerformed(evt);
-            }
-        });
-
-        tData.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tData.setText("Data de nascimento:");
-
-        tComplemento.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tComplemento.setText("Complemento:");
-
-        campN.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-
-        campEndereco.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        campEndereco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campEnderecoActionPerformed(evt);
-            }
-        });
-
-        buttonVoltar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        buttonVoltar.setText("Voltar");
-        buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonVoltarActionPerformed(evt);
-            }
-        });
-
-        tGenero.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tGenero.setText("Gênero:");
-
-        tCidade.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tCidade.setText("Cidade:");
-
-        tContato.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tContato.setText("Contato:");
-
-        campCidade.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        campCidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campCidadeActionPerformed(evt);
-            }
-        });
-
-        campContato.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        campContato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campContatoActionPerformed(evt);
-            }
-        });
-
-        campResponsavel.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        campResponsavel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campResponsavelActionPerformed(evt);
-            }
-        });
-
-        tResponsavel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tResponsavel.setText("Responsável:");
-
-        tEndereco.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tEndereco.setText("Rua:");
-
-        campDataN.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        try {
+            campDataN.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        campDataN.setToolTipText("");
         campDataN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campDataNActionPerformed(evt);
             }
         });
 
-        tNumero.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tNumero.setText("Nº:");
+        try {
+            campContato.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        campContato.setToolTipText("");
 
-        campComplemento.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        javax.swing.GroupLayout panelInfoLayout = new javax.swing.GroupLayout(panelInfo);
+        panelInfo.setLayout(panelInfoLayout);
+        panelInfoLayout.setHorizontalGroup(
+            panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelInfoLayout.createSequentialGroup()
+                        .addComponent(tResponsavel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campResponsavel))
+                    .addGroup(panelInfoLayout.createSequentialGroup()
+                        .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelInfoLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(tSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelInfoLayout.createSequentialGroup()
+                                .addComponent(tGenero)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfoLayout.createSequentialGroup()
+                                .addComponent(tData)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campDataN, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfoLayout.createSequentialGroup()
+                                .addComponent(tContato)
+                                .addGap(7, 7, 7)
+                                .addComponent(campContato, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelInfoLayout.createSequentialGroup()
+                        .addComponent(tNome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campNome)))
+                .addContainerGap())
+        );
+        panelInfoLayout.setVerticalGroup(
+            panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tNome)
+                    .addComponent(campNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tData)
+                    .addComponent(tGenero)
+                    .addComponent(campDataN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tSerie)
+                    .addComponent(campSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tContato)
+                    .addComponent(campContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tResponsavel)
+                    .addComponent(campResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(tGenero)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(tSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tContato)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campContato))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tData)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campDataN))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(tNome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campNome, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tEndereco)
-                            .addComponent(tBairro))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(campBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tNumero)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campN, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(campEndereco))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tCep)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campCep))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tCidade)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campCidade))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buttonConfirmar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonVoltar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tComplemento)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(tMensalidade)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campMensalidade, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTitulo)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(tResponsavel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campResponsavel)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(164, 164, 164)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(panelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(buttonConfirmar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonVoltar)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tNome)
-                    .addComponent(campNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tData)
-                    .addComponent(campDataN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tGenero))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tSerie)
-                    .addComponent(campSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tContato)
-                    .addComponent(campContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tEndereco)
-                    .addComponent(campEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tCidade)
-                    .addComponent(campCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tBairro)
-                    .addComponent(campBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tNumero)
-                    .addComponent(tCep)
-                    .addComponent(campCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tComplemento)
-                    .addComponent(campComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tMensalidade)
-                    .addComponent(campMensalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tResponsavel)
-                    .addComponent(campResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonConfirmar)
-                    .addComponent(buttonVoltar))
-                .addContainerGap())
+                    .addComponent(buttonVoltar)
+                    .addComponent(buttonConfirmar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campSerieActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campSerieActionPerformed
-
-    private void buttonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConfirmarActionPerformed
-        String serie = campSerie.getItemAt(campSerie.getSelectedIndex()); //Como pegar a string selecionada com a listinha
-        String genero = campGenero.getItemAt(campGenero.getSelectedIndex());
-        
-        Aluno rayssaPires = new Aluno(campNome.getText(), campDataN.getText(), genero, campContato.getText(), campEndereco.getText(), Integer.parseInt(campN.getText()), campBairro.getText(), campComplemento.getText(), campCidade.getText(), campCep.getText(), 2022150, campResponsavel.getText(), serie, Integer.parseInt(campMensalidade.getText()), financeiro);
-
+    private void setNull(){
         campNome.setText(null);
         campGenero.setSelectedIndex(2);
         campDataN.setText(null);
@@ -353,9 +384,30 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
         campN.setText(null);
         campCep.setText(null);
         campComplemento.setText(null);
-        campMensalidade.setText(null);
         campResponsavel.setText(null);
         campCidade.setText(null);
+    }
+    
+    private boolean verificaNull(){
+    
+        return false;
+    }
+    
+    
+    
+    private void buttonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConfirmarActionPerformed
+        String serie = campSerie.getItemAt(campSerie.getSelectedIndex()); //Como pegar a string selecionada com a listinha
+        String genero = campGenero.getItemAt(campGenero.getSelectedIndex());
+        
+        double mensalidade = financeiro.verificaMensalidade(serie);
+        
+        if(campNome.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "Campo Nome está vazio");
+        }
+        
+        Aluno rayssaPires = new Aluno(campNome.getText(), campDataN.getText(), genero, campContato.getText(), campEndereco.getText(), Integer.parseInt(campN.getText()), campBairro.getText(), campComplemento.getText(), campCidade.getText(), campCep.getText(), 2022150, campResponsavel.getText(), serie, mensalidade, financeiro);
+
+        setNull();
 
         //Desnecessário
         rayssaPires.mostraDetalhesAluno();
@@ -363,22 +415,6 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
         //Desnecessário
         
     }//GEN-LAST:event_buttonConfirmarActionPerformed
-
-    private void campGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campGeneroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campGeneroActionPerformed
-
-    private void campMensalidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campMensalidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campMensalidadeActionPerformed
-
-    private void campNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campNomeActionPerformed
-
-    private void campEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campEnderecoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campEnderecoActionPerformed
 
     private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
         setVisible(false);
@@ -388,13 +424,25 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campCidadeActionPerformed
 
-    private void campContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campContatoActionPerformed
+    private void campEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campEnderecoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campContatoActionPerformed
+    }//GEN-LAST:event_campEnderecoActionPerformed
+
+    private void campSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campSerieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campSerieActionPerformed
+
+    private void campGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campGeneroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campGeneroActionPerformed
 
     private void campResponsavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campResponsavelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campResponsavelActionPerformed
+
+    private void campNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campNomeActionPerformed
 
     private void campDataNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campDataNActionPerformed
         // TODO add your handling code here:
@@ -439,30 +487,30 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
     private javax.swing.JButton buttonConfirmar;
     private javax.swing.JButton buttonVoltar;
     private javax.swing.JTextField campBairro;
-    private javax.swing.JTextField campCep;
+    private javax.swing.JFormattedTextField campCep;
     private javax.swing.JTextField campCidade;
     private javax.swing.JTextField campComplemento;
-    private javax.swing.JTextField campContato;
-    private javax.swing.JTextField campDataN;
+    private javax.swing.JFormattedTextField campContato;
+    private javax.swing.JFormattedTextField campDataN;
     private javax.swing.JTextField campEndereco;
     private javax.swing.JComboBox<String> campGenero;
-    private javax.swing.JTextField campMensalidade;
     private javax.swing.JTextField campN;
     private javax.swing.JTextField campNome;
     private javax.swing.JTextField campResponsavel;
     private javax.swing.JComboBox<String> campSerie;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel tBairro;
-    private javax.swing.JLabel tCep;
-    private javax.swing.JLabel tCidade;
-    private javax.swing.JLabel tComplemento;
+    private javax.swing.JLabel jBairro;
+    private javax.swing.JLabel jCep;
+    private javax.swing.JLabel jCidade;
+    private javax.swing.JLabel jComplemento;
+    private javax.swing.JLabel jNum;
+    private javax.swing.JLabel jRua;
+    private javax.swing.JLabel jTitulo;
+    private javax.swing.JPanel panelEndereco;
+    private javax.swing.JPanel panelInfo;
     private javax.swing.JLabel tContato;
     private javax.swing.JLabel tData;
-    private javax.swing.JLabel tEndereco;
     private javax.swing.JLabel tGenero;
-    private javax.swing.JLabel tMensalidade;
     private javax.swing.JLabel tNome;
-    private javax.swing.JLabel tNumero;
     private javax.swing.JLabel tResponsavel;
     private javax.swing.JLabel tSerie;
     // End of variables declaration//GEN-END:variables

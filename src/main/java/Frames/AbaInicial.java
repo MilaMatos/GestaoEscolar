@@ -4,13 +4,15 @@ import Classes.Financeiro;
 
 public class AbaInicial extends javax.swing.JFrame {
     Financeiro financeiro;
+    Aluno aluno;
     /**
      * Creates new form AbaInicio
      */
-    public AbaInicial(Financeiro financeiro) {
+    public AbaInicial(Financeiro financeiro, Aluno aluno) {
         initComponents();
         this.setLocationRelativeTo(null);   //Inicializar no meio
         this.financeiro = financeiro;
+        this.aluno = aluno;
         
     }
 
@@ -187,6 +189,8 @@ public class AbaInicial extends javax.swing.JFrame {
 
     private void jMenuItemPesAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesAluActionPerformed
         //POR A ABA PRA PESQUISAR O ALUNO - O EXIBIR JA TA PRONTO
+        new Frames.AbaExibirAluno(aluno).setVisible(true);
+        
     }//GEN-LAST:event_jMenuItemPesAluActionPerformed
 
     private void jMenuItemNotasAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNotasAluActionPerformed
