@@ -1,54 +1,55 @@
 package Classes;
 
+import java.util.ArrayList;
+
 public class Financeiro {
-    private double receita;
-    private double despesas;  
-    
-    public Financeiro(){
-        this.receita = 0;
-        this.despesas = 0;
+    private ArrayList<Funcionario> listaDespesas;
+    private ArrayList<Aluno> listaReceitas;
+
+    public Financeiro(ArrayList alunos, ArrayList funcionarios) {
+        listaDespesas = funcionarios;
+        listaReceitas = alunos;
     }
-    
-    public double verificaMensalidade(String serie){
-        if(serie == "1º ANO") return 100;
-        if(serie == "2º ANO") return 200;
-        if(serie == "3º ANO") return 300;
-        if(serie == "4º ANO") return 400;
-        if(serie == "5º ANO") return 500;
+
+    public double verificaMensalidade(String serie) {
+        if (serie == "1º ANO")
+            return 100;
+        if (serie == "2º ANO")
+            return 200;
+        if (serie == "3º ANO")
+            return 300;
+        if (serie == "4º ANO")
+            return 400;
+        if (serie == "5º ANO")
+            return 500;
         return 0;
     }
-    
+
+    public double verificaSalario(double salario) {
+        if (salario >= 100 && salario <= 2000)
+            return salario;
+        else
+            return 0;
+    }
+
     public double getReceita() {
-        return receita;
+        double aux = 0;
+        for (int i = 0; i < listaReceitas.size(); i++) {
+            aux += listaReceitas.get(i).getMensalidade();
+        }
+        return aux;
     }
-    public void setReceita(double receita) {
-        this.receita = receita;
-    }
+
     public double getDespesas() {
-        return despesas;
+        double aux = 0;
+        for (int i = 0; i < listaDespesas.size(); i++) {
+            aux += listaDespesas.get(i).getSalario();
+        }
+        return aux;
     }
-    public void setDespesas(double despesas) {
-        this.despesas = despesas;
+
+    public double getTotal() {
+        return (getReceita() - getDespesas());
     }
-    
-    public void adicionaReceita(double receita){
-        this.receita += receita;
-    }
-    
-    public void adicionaDespesa(double despesa){
-        this.despesas += despesa;
-    }
-    
-    public double getTotal(){
-        return (receita-despesas);
-    }
-    
-    public void mostrarDespesas(){
-        System.out.println("Despesas: " + despesas);
-    }
-    
-    public void mostrarReceita(){
-        System.out.println("Receita: " + receita);
-    }    
-    
+
 }
