@@ -1,55 +1,92 @@
 package Classes;
 
-import java.util.ArrayList;
+public class Funcionario extends Pessoa {
+    private double salario; //
+    private String cargo; //
+    private String cpf; //
+    private String escolaridade; //
+    private String banco;
+    private String conta;
+    private int agencia;
+    private String tipoDeConta;
 
-public class Financeiro {
-    private ArrayList<Funcionario> listaDespesas;
-    private ArrayList<Aluno> listaReceitas;
+    public Funcionario(String nome, String dataNascimento, String genero, String contato, String rua, int numero,
+            String bairro, String complemento, String cidade, String cep, String escolaridade, String cargo,
+            double salario, String cpf, String banco, String conta, int agencia, String tipoDeConta) {
+        super(nome, dataNascimento, genero, contato, rua, numero, bairro, complemento, cidade, cep);
+        this.escolaridade = escolaridade;
+        this.cargo = cargo;
+        this.salario = salario;
+        this.cpf = cpf;
+        this.banco = banco;
+        this.conta = conta;
+        this.agencia = agencia;
+        this.tipoDeConta = tipoDeConta;
 
-    public Financeiro(ArrayList alunos, ArrayList funcionarios) {
-        listaDespesas = funcionarios;
-        listaReceitas = alunos;
+    } // Construtor pela metade - falta as especifidades da classe
+
+    // Gets e Sets
+    public double getSalario() {
+        return this.salario;
     }
 
-    public double verificaMensalidade(String serie) {
-        if (serie == "1º ANO")
-            return 100;
-        if (serie == "2º ANO")
-            return 200;
-        if (serie == "3º ANO")
-            return 300;
-        if (serie == "4º ANO")
-            return 400;
-        if (serie == "5º ANO")
-            return 500;
-        return 0;
+    public void setSalario(double salario) {
+        this.salario = salario;
     }
 
-    public double verificaSalario(double salario) {
-        if (salario >= 100 && salario <= 2000)
-            return salario;
-        else
-            return 0;
+    public String getCargo() {
+        return cargo;
     }
 
-    public double getReceita() {
-        double aux = 0;
-        for (int i = 0; i < listaReceitas.size(); i++) {
-            aux += listaReceitas.get(i).getMensalidade();
-        }
-        return aux;
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
-    public double getDespesas() {
-        double aux = 0;
-        for (int i = 0; i < listaDespesas.size(); i++) {
-            aux += listaDespesas.get(i).getSalario();
-        }
-        return aux;
+    public String getCpf() {
+        return cpf;
     }
 
-    public double getTotal() {
-        return (getReceita() - getDespesas());
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
+    public String getEscolaridade() {
+        return escolaridade;
+    }
+
+    public void setEscolaridade(String escolaridade) {
+        this.escolaridade = escolaridade;
+    }
+
+    public String getBanco() {
+        return banco;
+    }
+
+    public void setBanco(String banco) {
+        this.banco = banco;
+    }
+
+    public String getConta() {
+        return conta;
+    }
+
+    public void setConta(String conta) {
+        this.conta = conta;
+    }
+
+    public int getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(int agencia) {
+        this.agencia = agencia;
+    }
+
+    public String getTipoDeConta() {
+        return tipoDeConta;
+    }
+
+    public void setTipoDeConta(String tipoDeConta) {
+        this.tipoDeConta = tipoDeConta;
+    }
 }
