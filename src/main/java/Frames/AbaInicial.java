@@ -1,18 +1,29 @@
 package Frames;
 import Classes.Aluno;
 import Classes.Financeiro;
+import Classes.Funcionario;
+import java.util.ArrayList;
 
 public class AbaInicial extends javax.swing.JFrame {
     Financeiro financeiro;
-    Aluno aluno;
+    ArrayList<Aluno> listaAlunos;
+    ArrayList<Funcionario> listaFuncionario;
+    
+    private int aux = 20230000;
+    public int retornaMatricula(){
+        aux += 1;
+        return aux;
+    }
+    
     /**
      * Creates new form AbaInicio
      */
-    public AbaInicial(Financeiro financeiro, Aluno aluno) {
+    public AbaInicial(Financeiro financeiro, ArrayList listaA, ArrayList listaF) {
         initComponents();
         this.setLocationRelativeTo(null);   //Inicializar no meio
         this.financeiro = financeiro;
-        this.aluno = aluno;
+        this.listaAlunos = listaA;
+        this.listaFuncionario = listaF;
         
     }
 
@@ -170,9 +181,9 @@ public class AbaInicial extends javax.swing.JFrame {
                 .addComponent(jButtonSair)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(322, Short.MAX_VALUE)
+                .addContainerGap(329, Short.MAX_VALUE)
                 .addComponent(TituloGestao, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(314, Short.MAX_VALUE))
+                .addContainerGap(322, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,13 +199,13 @@ public class AbaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemCadAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadAluActionPerformed
-        AbaCadastroAluno abaCadastroAluno = new AbaCadastroAluno(financeiro);
+        AbaCadastroAluno abaCadastroAluno = new AbaCadastroAluno(financeiro, listaAlunos);
         abaCadastroAluno.setVisible(true);
     }//GEN-LAST:event_jMenuItemCadAluActionPerformed
 
     private void jMenuItemPesAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesAluActionPerformed
-        //POR A ABA PRA PESQUISAR O ALUNO - O EXIBIR JA TA PRONTO
-        new Frames.AbaExibirAluno(aluno).setVisible(true);
+        new AbaPesquisarAluno(listaAlunos).setVisible(true);
+        //new Frames.AbaExibirAluno(aluno).setVisible(true);
         
     }//GEN-LAST:event_jMenuItemPesAluActionPerformed
 

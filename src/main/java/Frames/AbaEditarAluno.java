@@ -51,10 +51,11 @@ public class AbaEditarAluno extends javax.swing.JFrame {
         buttonVoltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jAviso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial Black", 0, 11))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         jNome5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jNome5.setText("Complemento:");
@@ -144,21 +145,25 @@ public class AbaEditarAluno extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informações pessoais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial Black", 0, 12))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informações pessoais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
-        jNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jNome.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jNome.setForeground(new java.awt.Color(150, 20, 20));
         jNome.setText("Nome:");
 
         jNome1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jNome1.setText("Gênero:");
 
-        jLabel14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(150, 20, 20));
         jLabel14.setText("Responsável:");
 
-        jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(150, 20, 20));
         jLabel12.setText("Data de nascimento:");
 
-        jNome2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jNome2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jNome2.setForeground(new java.awt.Color(150, 20, 20));
         jNome2.setText("Série:");
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -178,8 +183,11 @@ public class AbaEditarAluno extends javax.swing.JFrame {
         campoResponsavel.setText(aluno.getResponsavel());
 
         campGenero.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        campGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Feminino", "Masculino", "" }));
-        campGenero.setSelectedIndex(2);
+        campGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Feminino", "Masculino", "Selecione" }));
+        int index = 2;
+        if(aluno.getGenero() == "Masculino") index = 1;
+        else if(aluno.getGenero() == "Feminino") index = 0;
+        campGenero.setSelectedIndex(index);
         campGenero.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         campGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,8 +196,14 @@ public class AbaEditarAluno extends javax.swing.JFrame {
         });
 
         campSerie.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        campSerie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1º ANO", "2º ANO", "3º ANO", "4ºANO", "5º ANO", "" }));
-        campSerie.setSelectedIndex(5);
+        campSerie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1º ANO", "2º ANO", "3º ANO", "4ºANO", "5º ANO", "Selecione" }));
+        int index2 = 5;
+        if(aluno.getSerie() == "1º ANO") index2 = 0;
+        else if(aluno.getSerie() == "2º ANO") index2 = 1;
+        else if(aluno.getSerie() == "3º ANO") index2 = 2;
+        else if(aluno.getSerie() == "4º ANO") index2 = 3;
+        else if(aluno.getSerie() == "5º ANO") index2 = 4;
+        campSerie.setSelectedIndex(index2);
         campSerie.setMinimumSize(new java.awt.Dimension(63, 22));
         campSerie.setPreferredSize(new java.awt.Dimension(65, 22));
         campSerie.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +230,7 @@ public class AbaEditarAluno extends javax.swing.JFrame {
                                 .addComponent(jNome2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(campSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
@@ -288,33 +302,46 @@ public class AbaEditarAluno extends javax.swing.JFrame {
             }
         });
 
+        jAviso.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jAviso.setForeground(new java.awt.Color(150, 20, 20));
+        jAviso.setText("Campo obrigatório");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(181, 181, 181)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonVoltar)
-                .addContainerGap())
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonVoltar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(181, 181, 181)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jAviso)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jAviso)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonVoltar)
                     .addComponent(jButton1))
@@ -324,6 +351,49 @@ public class AbaEditarAluno extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean verificaNull(){
+        if(campoNome.getText().isBlank() || (campSerie.getSelectedIndex() == 5 || campoResponsavel.getText().isBlank()) || campoData.getText().isBlank()){
+            return false;
+        }
+        else return true;
+    }
+    
+    private boolean validarIdade(){
+        String data = campoData.getText();
+        String serie = campSerie.getItemAt(campSerie.getSelectedIndex());
+        
+        String[] result = data.split("/");
+        int ano = Integer.parseInt(result[2]);
+        int mes = Integer.parseInt(result[1]);
+        
+        if(null != serie) switch (serie) {
+            case "1º ANO":
+                if(ano > 2017) return false;
+                if(ano == 2017 && mes > 3) return false;
+                break;
+            case "2º ANO":
+                if(ano > 2016) return false;
+                if(ano == 2016 && mes > 3) return false;
+                break;
+            case "3º ANO":
+                if(ano > 2015) return false;
+                if(ano == 2015 && mes > 3) return false;
+                break;
+            case "4º ANO":
+                if(ano > 2014) return false;
+                if(ano == 2014 && mes > 3) return false;
+                break;
+            case "5º ANO":
+                if(ano > 2013) return false;
+                if(ano == 2013 && mes > 3) return false;
+                break;
+            default:
+                break;
+        } 
+        return true;
+    }
+    
+    
     private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
         dispose();
         new Frames.AbaExibirAluno(aluno).setVisible(true);
@@ -333,22 +403,16 @@ public class AbaEditarAluno extends javax.swing.JFrame {
         String serie = campSerie.getItemAt(campSerie.getSelectedIndex()); //Como pegar a string selecionada com a listinha
         String genero = campGenero.getItemAt(campGenero.getSelectedIndex());
         
-        aluno.editarAluno(campoNome.getText(), campoData.getText(), genero, campoContato.getText(), campoRua.getText(), Integer.parseInt(campoNumero.getText()), campoBairro.getText(), campoComplemento.getText(), campoCidade.getText(), campoCep.getText(), campoResponsavel.getText(), serie);
-        /*aluno.setNome(campoNome.getText());
-        aluno.setDataNascimento(campoData.getText());
-        aluno.setContato(campoContato.getText());
-        aluno.setGenero(genero);
-        aluno.setSerie(serie);
-        aluno.setResponsavel(campoResponsavel.getText());
-        aluno.setCidade(campoCidade.getText());
-        aluno.setCep(campoCep.getText());
-        aluno.setRua(campoRua.getText());
-        aluno.setBairro(campoBairro.getText());
-        aluno.setNumero(Integer.parseInt(campoNumero.getText()));
-        aluno.setComplemento(campoComplemento.getText());*/
-        JOptionPane.showMessageDialog(this, "Informações alteradas");
-        dispose();
-        new Frames.AbaExibirAluno(aluno).setVisible(true);
+        if(this.verificaNull()){
+            if(this.validarIdade()){
+                aluno.editarAluno(campoNome.getText(), campoData.getText(), genero, campoContato.getText(), campoRua.getText(), Integer.parseInt(campoNumero.getText()), campoBairro.getText(), campoComplemento.getText(), campoCidade.getText(), campoCep.getText(), campoResponsavel.getText(), serie);
+                JOptionPane.showMessageDialog(this, "Informações alteradas");
+                dispose();
+                new Frames.AbaExibirAluno(aluno).setVisible(true);
+            }
+            else JOptionPane.showMessageDialog(this, "O aluno não possui idade sudiciente para cursar o " +serie, "AVISO", JOptionPane.WARNING_MESSAGE);
+        }
+        else JOptionPane.showMessageDialog(this, "Campo obrigatório em branco", "AVISO", JOptionPane.WARNING_MESSAGE);
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -414,6 +478,7 @@ public class AbaEditarAluno extends javax.swing.JFrame {
     private javax.swing.JTextField campoNumero;
     private javax.swing.JTextField campoResponsavel;
     private javax.swing.JTextField campoRua;
+    private javax.swing.JLabel jAviso;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;

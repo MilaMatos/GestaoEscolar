@@ -3,18 +3,18 @@ package Frames;
 import Classes.Aluno;
 import Classes.Financeiro;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import java.util.Arrays;
 
-public class AbaCadastroAluno extends javax.swing.JFrame {
+
+public class AbaCadastroAluno extends javax.swing.JFrame{
     Financeiro financeiro;
-    /**
-     * Creates new form CadastroAluno
-     * @param financeiro
-     */
-    public AbaCadastroAluno(Financeiro financeiro) {
+    ArrayList<Aluno> lista;
+
+    public AbaCadastroAluno(Financeiro financeiro, ArrayList lista) {
         initComponents();
         this.financeiro = financeiro;
+        this.lista = lista;
         this.setLocationRelativeTo(null);   //Inicializar no meio
         setAlwaysOnTop(true);       //Iniciar na frente do outro jFrame
         setResizable(false);        //Não mudar a configuração de do tamanho da tela
@@ -43,6 +43,7 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
         campComplemento = new javax.swing.JTextField();
         jComplemento = new javax.swing.JLabel();
         campCep = new javax.swing.JFormattedTextField();
+        campN = new javax.swing.JTextField();
         campN = new javax.swing.JTextField();
         jNum = new javax.swing.JLabel();
         panelInfo = new javax.swing.JPanel();
@@ -125,6 +126,11 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
         }
 
         campN.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        campN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campNKeyTyped(evt);
+            }
+        });
 
         jNum.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jNum.setText("Nº:");
@@ -385,7 +391,7 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonConfirmar)
                     .addComponent(buttonVoltar))
                 .addContainerGap())
@@ -411,7 +417,8 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
     
     private boolean verificaNull(){
         if(campNome.getText().isBlank() || (campSerie.getSelectedIndex() == 5 || campResponsavel.getText().isBlank()) || campDataN.getText().isBlank()){
-            return false;}
+            return false;
+        }
         else return true;
     }
     
@@ -456,19 +463,21 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
         String serie = campSerie.getItemAt(campSerie.getSelectedIndex()); //Como pegar a string selecionada com a listinha
         String genero = campGenero.getItemAt(campGenero.getSelectedIndex());
         double mensalidade = financeiro.verificaMensalidade(serie);
-        int numero = 0;
-        if(campN.getText().isBlank()){
-            numero = -1;
+        
+        int numero = -1;
+        if(!campN.getText().isBlank()){
+            numero = Integer.parseInt(campN.getText());
         }
         
         if(this.verificaNull()){
             if(this.validarIdade()){
-                Aluno rayssaPires = new Aluno(campNome.getText(), campDataN.getText(), genero, campContato.getText(), campEndereco.getText(),numero , campBairro.getText(), campComplemento.getText(), campCidade.getText(), campCep.getText(), 2022150, campResponsavel.getText(), serie, mensalidade, financeiro);
+                Aluno aux = new Aluno(campNome.getText(), campDataN.getText(), genero, campContato.getText(), campEndereco.getText(),numero , campBairro.getText(), campComplemento.getText(), campCidade.getText(), campCep.getText(),0 , campResponsavel.getText(), serie, mensalidade, financeiro);
+                lista.add(aux);
                 setNull();            
             }
-            else JOptionPane.showMessageDialog(this, "O aluno é muito novo para cursar " +serie);
+            else JOptionPane.showMessageDialog(this, "O aluno não possui idade sudiciente para cursar o " +serie, "AVISO", JOptionPane.WARNING_MESSAGE);
         }
-        else JOptionPane.showMessageDialog(this, "Campo obrigatório em branco");
+        else JOptionPane.showMessageDialog(this, "Campo obrigatório em branco", "AVISO", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_buttonConfirmarActionPerformed
 
     private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
@@ -510,6 +519,13 @@ public class AbaCadastroAluno extends javax.swing.JFrame {
     private void tNomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tNomeMouseExited
         tNome.setForeground(Color.black);
     }//GEN-LAST:event_tNomeMouseExited
+
+    private void campNKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campNKeyTyped
+       char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_campNKeyTyped
 
     /**
      * @param args the command line arguments

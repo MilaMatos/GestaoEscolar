@@ -7,7 +7,7 @@ public class Aluno extends Pessoa{
     private int matricula;
     private String responsavel;
     private String serie;
-    
+      
     public Aluno (String nome, String dataNascimento, String genero, String contato, String rua, int numero, String bairro, String complemento, String cidade, String cep, int matricula, String responsavel, String serie, double mensalidade, Financeiro fin){
         super(nome, dataNascimento, genero, contato, rua, numero, bairro, complemento, cidade, cep);
         this.matricula = matricula;
@@ -19,6 +19,12 @@ public class Aluno extends Pessoa{
         fin.adicionaReceita(mensalidade);
         
     }   //Construtor completo
+    
+    private int aux = 20230000;
+    public int retornaMatricula(){
+        aux += 1;
+        return aux;
+    }
     
     //Gets e Sets
      public double getMensalidade() {
