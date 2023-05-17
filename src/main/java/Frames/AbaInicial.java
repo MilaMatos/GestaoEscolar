@@ -214,7 +214,7 @@ public class AbaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemNotasAluActionPerformed
 
     private void jMenuItemCadFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadFunActionPerformed
-        new Frames.AbaCadastroFuncionario(financeiro).setVisible(true);
+        new Frames.AbaCadastroFuncionario(financeiro, listaFuncionario).setVisible(true);
     }//GEN-LAST:event_jMenuItemCadFunActionPerformed
 
     private void jMenuItemPesFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesFunActionPerformed
