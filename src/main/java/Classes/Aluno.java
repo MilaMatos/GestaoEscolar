@@ -1,6 +1,6 @@
 package Classes;
 
-public class Aluno extends Pessoa {
+public class Aluno extends Pessoa implements Comparable{
     private double mensalidade;
     private double notas;
     private boolean carne;
@@ -16,16 +16,8 @@ public class Aluno extends Pessoa {
         this.responsavel = responsavel;
         this.serie = serie;
         this.mensalidade = mensalidade;
-    } // Construtor completo
-
-    private int aux = 20230000;
-
-    public int retornaMatricula() {
-        aux += 1;
-        return aux;
     }
-
-    // Gets e Sets
+    
     public double getMensalidade() {
         return mensalidade;
     }
@@ -91,24 +83,14 @@ public class Aluno extends Pessoa {
         this.setComplemento(complemento);
     }
 
-    // Fim dos Gets e Sets
-
-    public void mostraDetalhesAluno() {
-        System.out.println("--------Detalhes do aluno--------");
-        System.out.println("Nome: " + getNome());
-        System.out.println("Data de nascimento: " + getDataNascimento());
-        System.out.println("Gênero: " + getGenero());
-        System.out.println("Número de contato: " + getContato());
-        System.out.println("Número da matrícula: " + getMatricula());
-        System.out.println("Responsável: " + getResponsavel());
-        System.out.println("Série: " + getSerie());
-        System.out.println("Valor da mensalidade: R$ " + getMensalidade());
-        System.out.println("---Endereço--- ");
-        System.out.println("Cidade: " + getCidade());
-        System.out.println("Rua: " + getRua());
-        System.out.println("Nº: " + getNumero());
-        System.out.println("Bairro: " + getBairro());
-        System.out.println("Complemento: " + getComplemento());
-        System.out.println("CEP: " + getCep());
+    @Override
+    public int compareTo(Object arg0) {
+        Aluno aux = (Aluno) arg0;
+            if(this.matricula < aux.getMatricula()) {
+                return -1;
+            }
+            if(this.matricula > aux.getMatricula()) {
+                return 1;}
+            return 0;
     }
 }
