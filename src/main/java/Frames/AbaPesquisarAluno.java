@@ -144,19 +144,11 @@ public class AbaPesquisarAluno extends javax.swing.JFrame {
             if(lista.get(i).getNome().equals(aux) || lista.get(i).getMatricula() == mat){
                 new Frames.AbaExibirAluno(lista.get(i)).setVisible(true);
                 dispose();
+                break;
             }
             if(i == (lista.size()-1) && !lista.get(i).getNome().equals(aux) && lista.get(i).getMatricula() != mat) JOptionPane.showMessageDialog(this, "Aluno não encontrado", "AVISO", JOptionPane.WARNING_MESSAGE);
+        }
 
-        }
-        
-        /*for(int i = 0; i < lista.size(); i++){
-            if(lista.get(i).getMatricula() == mat){
-                 new Frames.AbaExibirAluno(lista.get(i)).setVisible(true);
-                 dispose();
-            }
-            if(i == (lista.size()-1) && !lista.get(i).getNome().equals(aux)) JOptionPane.showMessageDialog(this, "Aluno não encontrado", "AVISO", JOptionPane.WARNING_MESSAGE);
-        }
-        */
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
