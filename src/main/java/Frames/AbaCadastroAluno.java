@@ -4,6 +4,7 @@ import Classes.Aluno;
 import Classes.Financeiro;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JOptionPane;
 
 
@@ -59,7 +60,7 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
         campSerie = new javax.swing.JComboBox<>();
         campDataN = new javax.swing.JFormattedTextField();
         campContato = new javax.swing.JFormattedTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jCampoObrigatorio = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -350,9 +351,9 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
                 .addGap(46, 46, 46))
         );
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(150, 20, 20));
-        jLabel1.setText("Campo obrigatório");
+        jCampoObrigatorio.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jCampoObrigatorio.setForeground(new java.awt.Color(150, 20, 20));
+        jCampoObrigatorio.setText("Campo obrigatório");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -375,7 +376,7 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buttonVoltar))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jCampoObrigatorio)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -389,7 +390,7 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(jCampoObrigatorio)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonConfirmar)
@@ -457,8 +458,6 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
         return true;
     }
     
-    
-    
     private void buttonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConfirmarActionPerformed
         String serie = campSerie.getItemAt(campSerie.getSelectedIndex()); //Como pegar a string selecionada com a listinha
         String genero = campGenero.getItemAt(campGenero.getSelectedIndex());
@@ -522,11 +521,11 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
     }//GEN-LAST:event_campDataNActionPerformed
 
     private void tNomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tNomeMouseEntered
-        tNome.setForeground(Color.red);
+
     }//GEN-LAST:event_tNomeMouseEntered
 
     private void tNomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tNomeMouseExited
-        tNome.setForeground(Color.black);
+
     }//GEN-LAST:event_tNomeMouseExited
 
     private void campNKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campNKeyTyped
@@ -587,10 +586,10 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
     private javax.swing.JTextField campResponsavel;
     private javax.swing.JComboBox<String> campSerie;
     private javax.swing.JLabel jBairro;
+    private javax.swing.JLabel jCampoObrigatorio;
     private javax.swing.JLabel jCep;
     private javax.swing.JLabel jCidade;
     private javax.swing.JLabel jComplemento;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jNum;
     private javax.swing.JLabel jRua;
     private javax.swing.JLabel jTitulo;

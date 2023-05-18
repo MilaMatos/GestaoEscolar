@@ -83,7 +83,11 @@ public class AbaEditarAluno extends javax.swing.JFrame {
 
         campoCep.setText(aluno.getCep());
 
-        campoNumero.setText(Integer.toString(aluno.getNumero()));
+        String num = null;
+        if(aluno.getNumero() != -1){
+            num = Integer.toString(aluno.getNumero());
+        }
+        campoNumero.setText(num);
 
         campoComplemento.setText(aluno.getComplemento());
         campoComplemento.setMinimumSize(new java.awt.Dimension(73, 20));

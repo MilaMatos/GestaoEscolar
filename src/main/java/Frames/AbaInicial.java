@@ -9,22 +9,12 @@ public class AbaInicial extends javax.swing.JFrame {
     ArrayList<Aluno> listaAlunos;
     ArrayList<Funcionario> listaFuncionario;
     
-    private int aux = 20230000;
-    public int retornaMatricula(){
-        aux += 1;
-        return aux;
-    }
-    
-    /**
-     * Creates new form AbaInicio
-     */
     public AbaInicial(Financeiro financeiro, ArrayList listaA, ArrayList listaF) {
         initComponents();
         this.setLocationRelativeTo(null);   //Inicializar no meio
         this.financeiro = financeiro;
         this.listaAlunos = listaA;
-        this.listaFuncionario = listaF;
-        
+        this.listaFuncionario = listaF;   
     }
 
     /**
@@ -204,9 +194,7 @@ public class AbaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCadAluActionPerformed
 
     private void jMenuItemPesAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesAluActionPerformed
-        new AbaPesquisarAluno(listaAlunos).setVisible(true);
-        //new Frames.AbaExibirAluno(aluno).setVisible(true);
-        
+        new AbaPesquisarAluno(listaAlunos).setVisible(true);  
     }//GEN-LAST:event_jMenuItemPesAluActionPerformed
 
     private void jMenuItemNotasAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNotasAluActionPerformed

@@ -1,21 +1,15 @@
-
 package Frames;
 
 import Classes.Financeiro;
 import Classes.Funcionario;
 
-import java.awt.Color;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 
 public class AbaCadastroFuncionario extends javax.swing.JFrame {
     Financeiro financeiro;
     ArrayList<Funcionario> lista;
 
-    /**
-     * Creates new form AbaCadastroFuncionario
-     */
     public AbaCadastroFuncionario(Financeiro financeiro, ArrayList lista) {
         initComponents();
         this.financeiro = financeiro;
@@ -717,11 +711,9 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
     }// GEN-LAST:event_campNomeActionPerformed
 
     private void tNomeMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_tNomeMouseEntered
-        tNome.setForeground(Color.red);
     }// GEN-LAST:event_tNomeMouseEntered
 
     private void tNomeMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_tNomeMouseExited
-        tNome.setForeground(Color.black);
     }// GEN-LAST:event_tNomeMouseExited
 
     private void campGeneroActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_campGeneroActionPerformed
