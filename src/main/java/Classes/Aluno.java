@@ -8,14 +8,17 @@ public class Aluno extends Pessoa implements Comparable{
     private String responsavel;
     private String serie;
 
+    private static int contador = 202300;
+
     public Aluno(String nome, String dataNascimento, String genero, String contato, String rua, int numero,
-            String bairro, String complemento, String cidade, String cep, int matricula, String responsavel,
+            String bairro, String complemento, String cidade, String cep, String responsavel,
             String serie, double mensalidade) {
         super(nome, dataNascimento, genero, contato, rua, numero, bairro, complemento, cidade, cep);
-        this.matricula = matricula;
         this.responsavel = responsavel;
         this.serie = serie;
         this.mensalidade = mensalidade;
+        this.matricula = contador;
+        Aluno.contador++;
     }
     
     public double getMensalidade() {
