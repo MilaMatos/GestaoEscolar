@@ -2,7 +2,6 @@ package Frames;
 
 import Classes.Aluno;
 import Classes.Financeiro;
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JOptionPane;
@@ -462,14 +461,6 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
         String serie = campSerie.getItemAt(campSerie.getSelectedIndex()); //Como pegar a string selecionada com a listinha
         String genero = campGenero.getItemAt(campGenero.getSelectedIndex());
         double mensalidade = financeiro.verificaMensalidade(serie);
-        int matricula;
-
-
-        if(lista.size()==0){
-            matricula = 2023000;
-        }
-        else matricula = lista.get(lista.size()-1).getMatricula()+1;
-
         
         int numero = -1;
         if(!campN.getText().isBlank()){
@@ -478,7 +469,7 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
         
         if(this.verificaNull()){
             if(this.validarIdade()){
-                Aluno aux = new Aluno(campNome.getText(), campDataN.getText(), genero, campContato.getText(), campEndereco.getText(),numero , campBairro.getText(), campComplemento.getText(), campCidade.getText(), campCep.getText(),matricula, campResponsavel.getText(), serie, mensalidade);
+                Aluno aux = new Aluno(campNome.getText(), campDataN.getText(), genero, campContato.getText(), campEndereco.getText(),numero , campBairro.getText(), campComplemento.getText(), campCidade.getText(), campCep.getText(), campResponsavel.getText(), serie, mensalidade);
                 lista.add(aux);
                 Collections.sort(lista);
                 setNull();            
