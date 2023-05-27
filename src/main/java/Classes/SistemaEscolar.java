@@ -1,6 +1,7 @@
 package Classes;
 
 import Frames.AbaInicial;
+import Frames.teste;
 import java.util.ArrayList;
 
 public class SistemaEscolar {
@@ -10,6 +11,5 @@ public class SistemaEscolar {
         Financeiro geral = new Financeiro(listaAlunos, listaFuncionario);
 
         new AbaInicial(geral, listaAlunos, listaFuncionario).setVisible(true);
-
     }
 }

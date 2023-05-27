@@ -11,7 +11,7 @@ public class Financeiro {
         listaReceitas = alunos;
     }
 
-    public double verificaMensalidade(String serie) {
+    public static double verificaMensalidade(String serie) {
         if (serie == "1º ANO")
             return 100;
         if (serie == "2º ANO")

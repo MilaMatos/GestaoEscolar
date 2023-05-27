@@ -3,7 +3,6 @@ package Frames;
 import Classes.Aluno;
 import Classes.Financeiro;
 import java.util.ArrayList;
-import java.util.Collections;
 import javax.swing.JOptionPane;
 
 
@@ -414,69 +413,35 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
         campResponsavel.setText(null);
         campCidade.setText(null);
     }
-    
-    private boolean verificaNull(){
-        if(campNome.getText().isBlank() || (campSerie.getSelectedIndex() == 5 || campResponsavel.getText().isBlank()) || campDataN.getText().isBlank()){
-            return false;
-        }
-        else return true;
-    }
-    
-    private boolean validarIdade(){
-        String data = campDataN.getText();
-        String serie = campSerie.getItemAt(campSerie.getSelectedIndex());
-        
-        String[] result = data.split("/");
-        int ano = Integer.parseInt(result[2]);
-        int mes = Integer.parseInt(result[1]);
-        
-        if(null != serie) switch (serie) {
-            case "1º ANO":
-                if(ano > 2017) return false;
-                if(ano == 2017 && mes > 3) return false;
-                break;
-            case "2º ANO":
-                if(ano > 2016) return false;
-                if(ano == 2016 && mes > 3) return false;
-                break;
-            case "3º ANO":
-                if(ano > 2015) return false;
-                if(ano == 2015 && mes > 3) return false;
-                break;
-            case "4º ANO":
-                if(ano > 2014) return false;
-                if(ano == 2014 && mes > 3) return false;
-                break;
-            case "5º ANO":
-                if(ano > 2013) return false;
-                if(ano == 2013 && mes > 3) return false;
-                break;
-            default:
-                break;
-        } 
-        return true;
-    }
-    
+       
     private void buttonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConfirmarActionPerformed
-        String serie = campSerie.getItemAt(campSerie.getSelectedIndex()); //Como pegar a string selecionada com a listinha
+        String nome = campNome.getText();
+        String data = campDataN.getText();
         String genero = campGenero.getItemAt(campGenero.getSelectedIndex());
-        double mensalidade = financeiro.verificaMensalidade(serie);
-        
+        String contato = campContato.getText();
+        String rua = campEndereco.getText();
         int numero = -1;
         if(!campN.getText().isBlank()){
             numero = Integer.parseInt(campN.getText());
         }
-        
-        if(this.verificaNull()){
-            if(this.validarIdade()){
-                Aluno aux = new Aluno(campNome.getText(), campDataN.getText(), genero, campContato.getText(), campEndereco.getText(),numero , campBairro.getText(), campComplemento.getText(), campCidade.getText(), campCep.getText(), campResponsavel.getText(), serie, mensalidade);
-                lista.add(aux);
-                Collections.sort(lista);
-                setNull();            
-            }
-            else JOptionPane.showMessageDialog(this, "O aluno não possui idade sudiciente para cursar o " +serie, "AVISO", JOptionPane.WARNING_MESSAGE);
+        String bairro = campBairro.getText();
+        String complemento = campComplemento.getText();
+        String cidade = campCidade.getText();
+        String cep = campCep.getText();
+        String responsavel = campResponsavel.getText();
+        String serie = campSerie.getItemAt(campSerie.getSelectedIndex()); //Como pegar a string selecionada com a listinha    
+                
+        switch(Aluno.adicionarAluno(lista, nome, data, genero, contato, rua, numero, bairro, complemento, cidade, cep, responsavel, serie)){
+            case -1: 
+                JOptionPane.showMessageDialog(this, "Campo obrigatório em branco", "AVISO", JOptionPane.WARNING_MESSAGE);
+                break;
+            case 1: 
+                JOptionPane.showMessageDialog(this, "O aluno não possui idade suficiente para cursar o " +serie, "AVISO", JOptionPane.WARNING_MESSAGE);
+                break;
+            case 0: 
+                setNull();
+                break;
         }
-        else JOptionPane.showMessageDialog(this, "Campo obrigatório em branco", "AVISO", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_buttonConfirmarActionPerformed
 
     private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed

@@ -1,11 +1,13 @@
 package Frames;
 
 import Classes.Aluno;
+import Classes.Financeiro;
 import javax.swing.JOptionPane;
 
 public class AbaEditarAluno extends javax.swing.JFrame {
     Aluno aluno;
-    public AbaEditarAluno(Aluno aluno) {
+    Financeiro financeiro;
+    public AbaEditarAluno(Aluno aluno, Financeiro financeiro) {
         this.aluno = aluno;
         initComponents();
         setLocationRelativeTo(null);   //Inicializar no meio
@@ -32,9 +34,9 @@ public class AbaEditarAluno extends javax.swing.JFrame {
         campoCidade = new javax.swing.JTextField();
         campoRua = new javax.swing.JTextField();
         campoBairro = new javax.swing.JTextField();
-        campoCep = new javax.swing.JTextField();
         campoNumero = new javax.swing.JTextField();
         campoComplemento = new javax.swing.JTextField();
+        campoCep = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jNome = new javax.swing.JLabel();
         jNome1 = new javax.swing.JLabel();
@@ -43,14 +45,14 @@ public class AbaEditarAluno extends javax.swing.JFrame {
         jNome2 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         campoNome = new javax.swing.JTextField();
-        campoData = new javax.swing.JTextField();
-        campoContato = new javax.swing.JTextField();
         campoResponsavel = new javax.swing.JTextField();
         campGenero = new javax.swing.JComboBox<>();
         campSerie = new javax.swing.JComboBox<>();
+        campoData = new javax.swing.JFormattedTextField();
+        campoContato = new javax.swing.JFormattedTextField();
         buttonVoltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        buttonEditar = new javax.swing.JButton();
         jAviso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,8 +83,6 @@ public class AbaEditarAluno extends javax.swing.JFrame {
 
         campoBairro.setText(aluno.getBairro());
 
-        campoCep.setText(aluno.getCep());
-
         String num = null;
         if(aluno.getNumero() != -1){
             num = Integer.toString(aluno.getNumero());
@@ -91,6 +91,12 @@ public class AbaEditarAluno extends javax.swing.JFrame {
 
         campoComplemento.setText(aluno.getComplemento());
         campoComplemento.setMinimumSize(new java.awt.Dimension(73, 20));
+
+        try {
+            campoCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,10 +117,10 @@ public class AbaEditarAluno extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campoCidade)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(41, 41, 41)
                         .addComponent(jLabel4)
-                        .addGap(13, 13, 13)
-                        .addComponent(campoCep, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoCep, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jNome3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -149,6 +155,8 @@ public class AbaEditarAluno extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        campoCep.setText(aluno.getCep());
+
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informações pessoais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         jNome.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -179,10 +187,6 @@ public class AbaEditarAluno extends javax.swing.JFrame {
                 campoNomeActionPerformed(evt);
             }
         });
-
-        campoData.setText(aluno.getDataNascimento());
-
-        campoContato.setText(aluno.getContato());
 
         campoResponsavel.setText(aluno.getResponsavel());
 
@@ -216,6 +220,19 @@ public class AbaEditarAluno extends javax.swing.JFrame {
             }
         });
 
+        try {
+            campoData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            campoContato.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-#### ")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        campoContato.setToolTipText("");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -234,16 +251,17 @@ public class AbaEditarAluno extends javax.swing.JFrame {
                                 .addComponent(jNome2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(campSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(campoContato, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoContato, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoData, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campoData, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -265,14 +283,14 @@ public class AbaEditarAluno extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jNome1)
                     .addComponent(jLabel12)
-                    .addComponent(campoData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jNome2)
                     .addComponent(jLabel13)
-                    .addComponent(campoContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
@@ -284,6 +302,9 @@ public class AbaEditarAluno extends javax.swing.JFrame {
             System.out.println("oi");
             campGenero.setSelectedIndex(1);
         }
+        String data = aluno.getDataNascimento();
+        campoData.setValue(data);
+        campoContato.setText(aluno.getContato());
 
         buttonVoltar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         buttonVoltar.setText("Voltar");
@@ -298,11 +319,11 @@ public class AbaEditarAluno extends javax.swing.JFrame {
         jLabel1.setFocusable(false);
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton1.setText("Editar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonEditar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        buttonEditar.setText("Editar");
+        buttonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonEditarActionPerformed(evt);
             }
         });
 
@@ -319,19 +340,19 @@ public class AbaEditarAluno extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonVoltar))
+                        .addGap(181, 181, 181)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(181, 181, 181)
-                                .addComponent(jLabel1))
+                                .addComponent(jAviso)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jAviso)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(buttonEditar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(buttonVoltar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -348,78 +369,48 @@ public class AbaEditarAluno extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonVoltar)
-                    .addComponent(jButton1))
+                    .addComponent(buttonEditar))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private boolean verificaNull(){
-        if(campoNome.getText().isBlank() || (campSerie.getSelectedIndex() == 5 || campoResponsavel.getText().isBlank()) || campoData.getText().isBlank()){
-            return false;
-        }
-        else return true;
-    }
-    
-    private boolean validarIdade(){
-        String data = campoData.getText();
-        String serie = campSerie.getItemAt(campSerie.getSelectedIndex());
-        
-        String[] result = data.split("/");
-        int ano = Integer.parseInt(result[2]);
-        int mes = Integer.parseInt(result[1]);
-        
-        if(null != serie) switch (serie) {
-            case "1º ANO":
-                if(ano > 2017) return false;
-                if(ano == 2017 && mes > 3) return false;
-                break;
-            case "2º ANO":
-                if(ano > 2016) return false;
-                if(ano == 2016 && mes > 3) return false;
-                break;
-            case "3º ANO":
-                if(ano > 2015) return false;
-                if(ano == 2015 && mes > 3) return false;
-                break;
-            case "4º ANO":
-                if(ano > 2014) return false;
-                if(ano == 2014 && mes > 3) return false;
-                break;
-            case "5º ANO":
-                if(ano > 2013) return false;
-                if(ano == 2013 && mes > 3) return false;
-                break;
-            default:
-                break;
-        } 
-        return true;
-    }
-    
-    
     private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
         dispose();
-        new Frames.AbaExibirAluno(aluno).setVisible(true);
+        new Frames.AbaExibirAluno(aluno, financeiro).setVisible(true);
     }//GEN-LAST:event_buttonVoltarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String serie = campSerie.getItemAt(campSerie.getSelectedIndex()); //Como pegar a string selecionada com a listinha
+    private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
+        String nome = campoNome.getText();
+        String data = campoData.getText();
         String genero = campGenero.getItemAt(campGenero.getSelectedIndex());
-        
-        if(this.verificaNull()){
-            if(this.validarIdade()){
-                aluno.editarAluno(campoNome.getText(), campoData.getText(), genero, campoContato.getText(), campoRua.getText(), Integer.parseInt(campoNumero.getText()), campoBairro.getText(), campoComplemento.getText(), campoCidade.getText(), campoCep.getText(), campoResponsavel.getText(), serie);
-                JOptionPane.showMessageDialog(this, "Informações alteradas");
-                dispose();
-                new Frames.AbaExibirAluno(aluno).setVisible(true);
-            }
-            else JOptionPane.showMessageDialog(this, "O aluno não possui idade sudiciente para cursar o " +serie, "AVISO", JOptionPane.WARNING_MESSAGE);
+        String contato = campoContato.getText();
+        String rua = campoRua.getText();
+        int numero = -1;
+        if(!campoNumero.getText().isBlank()){
+            numero = Integer.parseInt(campoNumero.getText());
         }
-        else JOptionPane.showMessageDialog(this, "Campo obrigatório em branco", "AVISO", JOptionPane.WARNING_MESSAGE);
+        String bairro = campoBairro.getText();
+        String complemento = campoComplemento.getText();
+        String cidade = campoCidade.getText();
+        String cep = campoCep.getText();
+        String responsavel = campoResponsavel.getText();
+        String serie = campSerie.getItemAt(campSerie.getSelectedIndex()); //Como pegar a string selecionada com a listinha    
 
-
-    }//GEN-LAST:event_jButton1ActionPerformed
+        switch(aluno.editarAluno(nome, data, genero, contato, rua, numero, bairro, complemento, cidade, cep, responsavel, serie)){
+            case -1: 
+                JOptionPane.showMessageDialog(this, "Campo obrigatório em branco", "AVISO", JOptionPane.WARNING_MESSAGE);
+                break;
+            case 1: 
+                JOptionPane.showMessageDialog(this, "O aluno não possui idade suficiente para cursar o " +serie, "AVISO", JOptionPane.WARNING_MESSAGE);
+                break;
+            case 0:
+                dispose();
+                new Frames.AbaExibirAluno(aluno, financeiro).setVisible(true);
+                break;
+        }
+    }//GEN-LAST:event_buttonEditarActionPerformed
 
     private void campoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeActionPerformed
         // TODO add your handling code here:
@@ -469,21 +460,21 @@ public class AbaEditarAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonEditar;
     private javax.swing.JButton buttonVoltar;
     private javax.swing.JComboBox<String> campGenero;
     private javax.swing.JComboBox<String> campSerie;
     private javax.swing.JTextField campoBairro;
-    private javax.swing.JTextField campoCep;
+    private javax.swing.JFormattedTextField campoCep;
     private javax.swing.JTextField campoCidade;
     private javax.swing.JTextField campoComplemento;
-    private javax.swing.JTextField campoContato;
-    private javax.swing.JTextField campoData;
+    private javax.swing.JFormattedTextField campoContato;
+    private javax.swing.JFormattedTextField campoData;
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoNumero;
     private javax.swing.JTextField campoResponsavel;
     private javax.swing.JTextField campoRua;
     private javax.swing.JLabel jAviso;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

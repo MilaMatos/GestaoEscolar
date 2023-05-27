@@ -3,20 +3,22 @@ package Frames;
 import Classes.Aluno;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import Classes.Financeiro;
 
 public class AbaPesquisarAluno extends javax.swing.JFrame {
     ArrayList<Aluno> lista;
+    Financeiro financeiro;
 
     /**
      * Creates new form AbaPesquisarAluno
      */
-    public AbaPesquisarAluno(ArrayList lista) {
+    public AbaPesquisarAluno(ArrayList lista, Financeiro financeiro) {
         this.lista = lista;
+        this.financeiro = financeiro;
         initComponents();
         this.setLocationRelativeTo(null);   //Inicializar no meio
         setAlwaysOnTop(true);       //Iniciar na frente do outro jFrame
         setResizable(false);        //Não mudar a configuração de do tamanho da tela
-       
     }
 
     /**
@@ -142,7 +144,7 @@ public class AbaPesquisarAluno extends javax.swing.JFrame {
         
         for(int i = 0; i < lista.size(); i++){
             if(lista.get(i).getNome().equals(aux) || lista.get(i).getMatricula() == mat){
-                new Frames.AbaExibirAluno(lista.get(i)).setVisible(true);
+                new Frames.AbaExibirAluno(lista.get(i), financeiro).setVisible(true);
                 dispose();
                 break;
             }

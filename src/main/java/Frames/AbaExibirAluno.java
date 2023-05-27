@@ -1,11 +1,13 @@
 package Frames;
 
 import Classes.Aluno;
+import Classes.Financeiro;
 
 public class AbaExibirAluno extends javax.swing.JFrame {
     Aluno aluno;
-
-    public AbaExibirAluno(Aluno aluno) {
+    Financeiro financeiro;
+    
+    public AbaExibirAluno(Aluno aluno, Financeiro financeiro) {
         this.aluno = aluno;
         initComponents();
         setLocationRelativeTo(null);   //Inicializar no meio
@@ -336,7 +338,7 @@ public class AbaExibirAluno extends javax.swing.JFrame {
         dispose();
         
 
-        new Frames.AbaEditarAluno(aluno).setVisible(true);
+        new Frames.AbaEditarAluno(aluno, financeiro).setVisible(true);
        
     }//GEN-LAST:event_buttonEditarActionPerformed
 
