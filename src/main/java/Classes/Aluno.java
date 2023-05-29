@@ -11,6 +11,7 @@ public class Aluno extends Pessoa implements Comparable{
     private String responsavel;
     private String serie;
 
+    
     private static int contador = 202300;
 
     public Aluno(String nome, String dataNascimento, String genero, String contato, String rua, int numero,
@@ -49,6 +50,7 @@ public class Aluno extends Pessoa implements Comparable{
         this.serie = serie;
     }
 
+    //Função auxiliar para o editar Aluno - altera as informações do aluno
     private void alterarInfo(String nome, String dataNascimento, String genero, String contato, String rua, int numero,
             String bairro, String complemento, String cidade, String cep, String responsavel, String serie, double mensalidade) {
         this.setNome(nome);
@@ -66,6 +68,7 @@ public class Aluno extends Pessoa implements Comparable{
         this.mensalidade = Financeiro.verificaMensalidade(serie);
     }
     
+    //Função que após as verificações (Campos obrigatórios e idade) chama a função auxiliar para alterar as informações
     public int editarAluno(String nome, String data, String genero, String contato, String rua, int numero,
             String bairro, String complemento, String cidade, String cep, String responsavel, String serie) {
             
@@ -79,6 +82,7 @@ public class Aluno extends Pessoa implements Comparable{
         return -1;                
     }
     
+    //Cria e adiciona o aluno na lista passada (Após as verificações de campos obrigatórios e idade)
     public static int adicionarAluno(ArrayList lista,String nome, String data, String genero, String contato, String rua, int numero,
             String bairro, String complemento, String cidade, String cep, String responsavel,
             String serie){
@@ -97,7 +101,6 @@ public class Aluno extends Pessoa implements Comparable{
     
     public static boolean verificaCampoObrigatorio(String nome, String serie, String responsavel, String data){
         if( (nome.isBlank()) || (serie.equals("Selecione")) || (responsavel.isBlank()) || (data.equals("  /  /    ")) ){
-            System.out.println(data);
             return false;
         }
         else return true;
@@ -133,6 +136,24 @@ public class Aluno extends Pessoa implements Comparable{
                 break;
         } 
         return true;
+    }
+    
+    public static Aluno pesquisarAluno(ArrayList<Aluno> lista, String nome){
+        for(int i = 0; i < lista.size(); i++){
+            if(lista.get(i).getNome().equals(nome)){
+                return lista.get(i);
+                }
+        }
+        return null;
+    }
+    
+    public static Aluno pesquisarAluno(ArrayList<Aluno> lista, int mat){
+        for(int i = 0; i < lista.size(); i++){
+            if(lista.get(i).getMatricula() == mat){
+                return lista.get(i);
+                }
+        }
+        return null;
     }
     
     @Override
