@@ -1,15 +1,15 @@
 package Frames;
 
-import Classes.Aluno;
+import Classes.Financeiro;
+import Classes.Funcionario;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import Classes.Financeiro;
 
-public class AbaPesquisarAluno extends javax.swing.JFrame {
-    ArrayList<Aluno> lista;
+public class AbaPesquisarFuncionario extends javax.swing.JFrame {
+    ArrayList<Funcionario> lista;
     Financeiro financeiro;
 
-    public AbaPesquisarAluno(ArrayList lista, Financeiro financeiro) {
+    public AbaPesquisarFuncionario(ArrayList lista, Financeiro financeiro) {
         this.lista = lista;
         this.financeiro = financeiro;
         initComponents();
@@ -17,8 +17,6 @@ public class AbaPesquisarAluno extends javax.swing.JFrame {
         setAlwaysOnTop(true);       //Iniciar na frente do outro jFrame
         setResizable(false);        //Não mudar a configuração de do tamanho da tela
         jLista.setVisible(false);
-        campMatricula.setVisible(false);
-        jMatricula.setVisible(false);
     }
 
     /**
@@ -31,8 +29,6 @@ public class AbaPesquisarAluno extends javax.swing.JFrame {
     private void initComponents() {
 
         jTitulo = new javax.swing.JLabel();
-        jMatricula = new javax.swing.JLabel();
-        campMatricula = new javax.swing.JFormattedTextField();
         jNome = new javax.swing.JLabel();
         campNome = new javax.swing.JTextField();
         jLista = new javax.swing.JList<>();
@@ -43,16 +39,6 @@ public class AbaPesquisarAluno extends javax.swing.JFrame {
 
         jTitulo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jTitulo.setText("Pesquisar");
-
-        jMatricula.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jMatricula.setText("Matrícula:");
-
-        campMatricula.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        try {
-            campMatricula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
 
         jNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jNome.setText("Nome:");
@@ -102,13 +88,8 @@ public class AbaPesquisarAluno extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jMatricula)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                         .addComponent(buttonVoltar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jNome)
@@ -118,7 +99,7 @@ public class AbaPesquisarAluno extends javax.swing.JFrame {
                             .addComponent(campNome))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(108, 108, 108)
+                .addGap(121, 121, 121)
                 .addComponent(jTitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -127,17 +108,13 @@ public class AbaPesquisarAluno extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTitulo)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jMatricula)
-                    .addComponent(campMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jNome)
                     .addComponent(campNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
                 .addComponent(jLista, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(buttonVoltar))
@@ -146,14 +123,20 @@ public class AbaPesquisarAluno extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void campNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campNomeActionPerformed
-  
+
     }//GEN-LAST:event_campNomeActionPerformed
 
-    private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
-        setVisible(false);
-    }//GEN-LAST:event_buttonVoltarActionPerformed
+    private void jListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaMouseClicked
+        for(int i = 0; i < lista.size(); i++){
+            if(lista.get(i).getNome().equals(jLista.getSelectedValue())){
+                new Frames.AbaExibirFuncionario(lista.get(i), financeiro, lista).setVisible(true);
+                dispose();
+                break;
+            }
+        }
+    }//GEN-LAST:event_jListaMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String aux = campNome.getText();
@@ -172,25 +155,19 @@ public class AbaPesquisarAluno extends javax.swing.JFrame {
             public String getElementAt(int i) { return listaAux.get(i); }
         });
 
-        //Se a lista não estiver vazia (achou pelo menos um aluno) vai exibir a lista com os nomes, senão vai exibir a mensagem de "erro"  
+        //Se a lista não estiver vazia (achou pelo menos um aluno) vai exibir a lista com os nomes, senão vai exibir a mensagem de "erro"
         if (!listaAux.isEmpty()) {
             jLista.setVisible(true);
         }
         else{
-            JOptionPane.showMessageDialog(this, "Aluno não encontrado", "AVISO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Funcionario não encontrado", "AVISO", JOptionPane.WARNING_MESSAGE);
         }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaMouseClicked
-        //Vai pesquisar novamente, agora exatamente o nome passado(o nome selecionado) e abrir uma nova aba para exibir as informações
-        for(int i = 0; i < lista.size(); i++){
-            if(lista.get(i).getNome().equals(jLista.getSelectedValue())){
-                new Frames.AbaExibirAluno(lista.get(i), financeiro, lista).setVisible(true);
-                dispose();
-                break;
-            }
-        }
-            }//GEN-LAST:event_jListaMouseClicked
+    private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_buttonVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,31 +186,29 @@ public class AbaPesquisarAluno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AbaPesquisarAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AbaPesquisarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AbaPesquisarAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AbaPesquisarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AbaPesquisarAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AbaPesquisarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AbaPesquisarAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AbaPesquisarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new AbaPesquisarAluno().setVisible(true);
+                //new AbaPesquisarFuncionario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonVoltar;
-    private javax.swing.JFormattedTextField campMatricula;
     private javax.swing.JTextField campNome;
     private javax.swing.JButton jButton1;
     private javax.swing.JList<String> jLista;
-    private javax.swing.JLabel jMatricula;
     private javax.swing.JLabel jNome;
     private javax.swing.JLabel jTitulo;
     // End of variables declaration//GEN-END:variables

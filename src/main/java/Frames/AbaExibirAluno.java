@@ -2,16 +2,20 @@ package Frames;
 
 import Classes.Aluno;
 import Classes.Financeiro;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class AbaExibirAluno extends javax.swing.JFrame {
     Aluno aluno;
     Financeiro financeiro;
+    ArrayList<Aluno> lista;
     
-    public AbaExibirAluno(Aluno aluno, Financeiro financeiro) {
+    public AbaExibirAluno(Aluno aluno, Financeiro financeiro, ArrayList<Aluno> lista) {
         this.aluno = aluno;
+        this.lista = lista;
+        this.financeiro = financeiro;
         initComponents();
         setLocationRelativeTo(null);   //Inicializar no meio
-        setAlwaysOnTop(true);       //Iniciar na frente do outro jFrame
         setResizable(false);        //Não mudar a configuração de do tamanho da tela
     }
 
@@ -51,6 +55,7 @@ public class AbaExibirAluno extends javax.swing.JFrame {
         jMatricula = new javax.swing.JLabel();
         jMatricula2 = new javax.swing.JLabel();
         buttonEditar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
 
@@ -182,7 +187,9 @@ public class AbaExibirAluno extends javax.swing.JFrame {
         jGenero.setText("Gênero:");
 
         jGenero2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jGenero2.setText(aluno.getGenero());
+        if(aluno.getGenero() == "Selecione") jGenero2.setText("");
+        else
+        jGenero2.setText("");
 
         jResponsavel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jResponsavel.setText("Responsável:");
@@ -294,6 +301,15 @@ public class AbaExibirAluno extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(200, 50, 50));
+        jButton1.setText("Excluir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -306,6 +322,8 @@ public class AbaExibirAluno extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(buttonEditar)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonVoltar)
                 .addContainerGap())
@@ -323,7 +341,8 @@ public class AbaExibirAluno extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonVoltar)
-                    .addComponent(buttonEditar))
+                    .addComponent(buttonEditar)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -336,11 +355,19 @@ public class AbaExibirAluno extends javax.swing.JFrame {
 
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
         dispose();
-        
-
-        new Frames.AbaEditarAluno(aluno, financeiro).setVisible(true);
+        new Frames.AbaEditarAluno(aluno, financeiro, lista).setVisible(true);
        
     }//GEN-LAST:event_buttonEditarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int opcao = JOptionPane.showConfirmDialog(null, "Todos os dados do aluno serão excluídos \n\n                     Prosseguir?", "Aviso", JOptionPane.YES_NO_OPTION);
+        if(opcao == JOptionPane.YES_OPTION){
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(this, "Aluno removido com sucesso", "AVISO", JOptionPane.WARNING_MESSAGE);
+            Aluno.excluirAluno(lista, aluno);
+            dispose();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -383,6 +410,7 @@ public class AbaExibirAluno extends javax.swing.JFrame {
     private javax.swing.JButton buttonVoltar;
     private javax.swing.JLabel jBairro;
     private javax.swing.JLabel jBairro2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jCep;
     private javax.swing.JLabel jCep2;
     private javax.swing.JLabel jCidade;

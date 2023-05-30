@@ -35,15 +35,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jAviso" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="buttonEditar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="38" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="jAviso" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonEditar" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="buttonVoltar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>

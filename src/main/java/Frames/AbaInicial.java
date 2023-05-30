@@ -38,15 +38,11 @@ public class AbaInicial extends javax.swing.JFrame {
         jMenuItemPesFun = new javax.swing.JMenuItem();
         jMenuItemProfFun = new javax.swing.JMenuItem();
         menuFinanceiro = new javax.swing.JMenu();
-        jMenuItemMenFin = new javax.swing.JMenuItem();
-        jMenuItemRecFin = new javax.swing.JMenuItem();
-        jMenuItemDesFin = new javax.swing.JMenuItem();
         jMenuItemRelFin = new javax.swing.JMenuItem();
         menuTurmas = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema escolar");
-        setPreferredSize(new java.awt.Dimension(1000, 500));
 
         jButtonSair.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButtonSair.setText("Sair");
@@ -123,30 +119,6 @@ public class AbaInicial extends javax.swing.JFrame {
 
         menuFinanceiro.setText("Financeiro");
 
-        jMenuItemMenFin.setText("Mensalidades");
-        jMenuItemMenFin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemMenFinActionPerformed(evt);
-            }
-        });
-        menuFinanceiro.add(jMenuItemMenFin);
-
-        jMenuItemRecFin.setText("Receitas");
-        jMenuItemRecFin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemRecFinActionPerformed(evt);
-            }
-        });
-        menuFinanceiro.add(jMenuItemRecFin);
-
-        jMenuItemDesFin.setText("Despesas");
-        jMenuItemDesFin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemDesFinActionPerformed(evt);
-            }
-        });
-        menuFinanceiro.add(jMenuItemDesFin);
-
         jMenuItemRelFin.setText("Relatório");
         jMenuItemRelFin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,24 +178,12 @@ public class AbaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCadFunActionPerformed
 
     private void jMenuItemPesFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesFunActionPerformed
-        // TODO add your handling code here:
+        new Frames.AbaPesquisarFuncionario(listaFuncionario, financeiro).setVisible(true);
     }//GEN-LAST:event_jMenuItemPesFunActionPerformed
 
     private void jMenuItemProfFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProfFunActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemProfFunActionPerformed
-
-    private void jMenuItemMenFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMenFinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemMenFinActionPerformed
-
-    private void jMenuItemRecFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRecFinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemRecFinActionPerformed
-
-    private void jMenuItemDesFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDesFinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemDesFinActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         System.exit(0);
@@ -275,13 +235,10 @@ public class AbaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItemCadAlu;
     private javax.swing.JMenuItem jMenuItemCadFun;
-    private javax.swing.JMenuItem jMenuItemDesFin;
-    private javax.swing.JMenuItem jMenuItemMenFin;
     private javax.swing.JMenuItem jMenuItemNotasAlu;
     private javax.swing.JMenuItem jMenuItemPesAlu;
     private javax.swing.JMenuItem jMenuItemPesFun;
     private javax.swing.JMenuItem jMenuItemProfFun;
-    private javax.swing.JMenuItem jMenuItemRecFin;
     private javax.swing.JMenuItem jMenuItemRelFin;
     private javax.swing.JMenu menuAlunos;
     private javax.swing.JMenu menuFinanceiro;

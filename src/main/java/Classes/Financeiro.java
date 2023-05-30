@@ -36,7 +36,7 @@ public class Financeiro {
         double aux = 0;
         for (int i = 0; i < listaReceitas.size(); i++) {
             aux += listaReceitas.get(i).getMensalidade();
-        }
+        } 
         return aux;
     }
 

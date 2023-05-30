@@ -147,13 +147,20 @@ public class Aluno extends Pessoa implements Comparable{
         return null;
     }
     
-    public static Aluno pesquisarAluno(ArrayList<Aluno> lista, int mat){
+    public static int pesquisarAluno(ArrayList<Aluno> lista, Aluno aluno){
         for(int i = 0; i < lista.size(); i++){
-            if(lista.get(i).getMatricula() == mat){
-                return lista.get(i);
-                }
+            if(lista.get(i).getMatricula() == aluno.getMatricula()){
+                return i;
+            }
         }
-        return null;
+        return -1;
+    }
+    
+    public static void excluirAluno(ArrayList<Aluno> lista, Aluno aluno){
+        int i = Aluno.pesquisarAluno(lista, aluno);
+        if(i != -1){
+            lista.remove(i);
+        }
     }
     
     @Override

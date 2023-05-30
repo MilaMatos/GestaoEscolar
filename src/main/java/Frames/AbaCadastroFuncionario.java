@@ -557,6 +557,7 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
         campBanco.setText(null);
         campConta.setText(null);
         campAgencia.setText(null);
+        jSelecioneCargo.setSelectedIndex(2);
     }
 
     private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_buttonVoltarActionPerformed

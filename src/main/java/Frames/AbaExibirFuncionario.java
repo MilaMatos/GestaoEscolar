@@ -1,15 +1,21 @@
 package Frames;
 
+import Classes.Financeiro;
 import Classes.Funcionario;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class AbaExibirFuncionario extends javax.swing.JFrame {
     Funcionario funcionario;
+    Financeiro financeiro;
+    ArrayList<Funcionario> lista;
 
-    public AbaExibirFuncionario(Funcionario funcionario) {
-        initComponents();
+    public AbaExibirFuncionario(Funcionario funcionario, Financeiro financeiro, ArrayList<Funcionario> lista) {
         this.funcionario = funcionario;
+        this.lista = lista;
+        this.financeiro = financeiro; 
+        initComponents();
         setLocationRelativeTo(null);   //Inicializar no meio
-        setAlwaysOnTop(true);       //Iniciar na frente do outro jFrame
         setResizable(false);        //Não mudar a configuração de do tamanho da tela
     }
 
@@ -59,6 +65,7 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
         jData2 = new javax.swing.JLabel();
         jContato2 = new javax.swing.JLabel();
         jCpf2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,22 +90,25 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
         jNum.setText("Nº:");
 
         jCidade2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jCidade2.setText("jLabel1");
+        jCidade2.setText(funcionario.getCidade());
 
         jBairro2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jBairro2.setText("jLabel1");
+        jBairro2.setText(funcionario.getBairro());
 
         jRua2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jRua2.setText("jLabel1");
+        jRua2.setText(funcionario.getRua());
 
         jCep2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jCep2.setText("jLabel1");
+        jCep2.setText(funcionario.getCep());
 
-        jNum2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jNum2.setText("jLabel1");
+        if(funcionario.getNumero() == -1){
+            jNum2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+            jNum2.setText("");
+        }
+        else jNum2.setText(Integer.toString(funcionario.getNumero()));
 
         jComplemento2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jComplemento2.setText("jLabel1");
+        jComplemento2.setText(funcionario.getComplemento());
 
         javax.swing.GroupLayout panelEnderecoLayout = new javax.swing.GroupLayout(panelEndereco);
         panelEndereco.setLayout(panelEnderecoLayout);
@@ -141,21 +151,19 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
         panelEnderecoLayout.setVerticalGroup(
             panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEnderecoLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCidade)
                     .addComponent(jCep)
                     .addComponent(jCidade2)
                     .addComponent(jCep2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jNum)
-                        .addComponent(jNum2))
-                    .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jBairro)
-                        .addComponent(jBairro2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBairro)
+                    .addComponent(jBairro2)
+                    .addComponent(jNum)
+                    .addComponent(jNum2))
+                .addGap(13, 13, 13)
                 .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jRua)
@@ -184,19 +192,21 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
         jBanco.setText("Banco:");
 
         jTipoDeConta2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jTipoDeConta2.setText("jLabel1");
+        if(funcionario.getTipoDeConta() == "Selecione") jTipoDeConta2.setText("");
+        else
+        jTipoDeConta2.setText(funcionario.getTipoDeConta());
 
         jBanco2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jBanco2.setText("jLabel1");
+        jBanco2.setText(funcionario.getBanco());
 
         jConta2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jConta2.setText("jLabel1");
+        jConta2.setText(funcionario.getConta());
 
         jSalario2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jSalario2.setText("jLabel1");
+        jSalario2.setText(Double.toString(funcionario.getSalario()));
 
         jAgencia2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jAgencia2.setText("jLabel1");
+        jAgencia2.setText(Integer.toString(funcionario.getAgencia()));
 
         javax.swing.GroupLayout panelBancoLayout = new javax.swing.GroupLayout(panelBanco);
         panelBanco.setLayout(panelBancoLayout);
@@ -305,25 +315,29 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
         tSerie.setText("CPF:");
 
         jNome2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jNome2.setText("jLabel2");
+        jNome2.setText(funcionario.getNome());
 
         jGenero2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jGenero2.setText("jLabel1");
+        if(funcionario.getGenero() == "Selecione") jGenero2.setText("");
+        else
+        jGenero2.setText(funcionario.getGenero());
 
         jCargo2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jCargo2.setText("jLabel1");
+        jCargo2.setText(funcionario.getCargo());
 
         jEscolaridade2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jEscolaridade2.setText("jLabel1");
+        if(funcionario.getEscolaridade() == "Selecione") jEscolaridade2.setText("");
+        else
+        jEscolaridade2.setText(funcionario.getEscolaridade());
 
         jData2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jData2.setText("jLabel1");
+        jData2.setText(funcionario.getDataNascimento());
 
         jContato2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jContato2.setText("jLabel1");
+        jContato2.setText(funcionario.getContato());
 
         jCpf2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jCpf2.setText("jLabel1");
+        jCpf2.setText(funcionario.getCpf());
 
         javax.swing.GroupLayout panelInfoLayout = new javax.swing.GroupLayout(panelInfo);
         panelInfo.setLayout(panelInfoLayout);
@@ -350,24 +364,25 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
                                 .addComponent(jData2)
                                 .addGap(57, 57, 57))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfoLayout.createSequentialGroup()
-                                .addComponent(tContato1)
+                                .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tContato1)
+                                    .addComponent(tSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jCpf2)
                                     .addComponent(jContato2))
                                 .addGap(79, 79, 79))))
                     .addGroup(panelInfoLayout.createSequentialGroup()
-                        .addComponent(tNome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jNome2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(panelInfoLayout.createSequentialGroup()
-                        .addComponent(jEscolaridade)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jEscolaridade2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(114, 114, 114))))
+                        .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelInfoLayout.createSequentialGroup()
+                                .addComponent(tNome)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jNome2))
+                            .addGroup(panelInfoLayout.createSequentialGroup()
+                                .addComponent(jEscolaridade)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jEscolaridade2)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         panelInfoLayout.setVerticalGroup(
             panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -397,50 +412,56 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
                 .addGap(47, 47, 47))
         );
 
+        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(200, 50, 50));
+        jButton1.setText("Excluir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(panelEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(panelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(panelBanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(panelEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelBanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(buttonEditar)
+                        .addGap(51, 51, 51)
+                        .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buttonVoltar)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(202, 202, 202)
+                .addGap(235, 235, 235)
                 .addComponent(jtitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addComponent(jtitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(14, 14, 14)
                 .addComponent(panelBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonEditar)
-                    .addComponent(buttonVoltar))
+                    .addComponent(buttonVoltar)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -462,6 +483,16 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
     private void tNomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tNomeMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_tNomeMouseExited
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int opcao = JOptionPane.showConfirmDialog(null, "Todos os dados do funcionário serão excluídos \n\n                     Prosseguir?", "Aviso", JOptionPane.YES_NO_OPTION);
+        if(opcao == JOptionPane.YES_OPTION){
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(this, "Funcionário removido com sucesso", "AVISO", JOptionPane.WARNING_MESSAGE);
+            Funcionario.excluirFuncionario(lista, funcionario);
+            dispose();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -507,6 +538,7 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jBairro2;
     private javax.swing.JLabel jBanco;
     private javax.swing.JLabel jBanco2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jCargo2;
     private javax.swing.JLabel jCep;
     private javax.swing.JLabel jCep2;

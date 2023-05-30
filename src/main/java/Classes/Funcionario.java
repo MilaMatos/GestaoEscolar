@@ -1,7 +1,6 @@
 package Classes;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Funcionario extends Pessoa {
     private double salario; //
@@ -12,6 +11,9 @@ public class Funcionario extends Pessoa {
     private String conta;
     private int agencia;
     private String tipoDeConta;
+    private int id;
+    
+    private static int contador = 202300;
 
     public Funcionario(String nome, String dataNascimento, String genero, String contato, String rua, int numero,
             String bairro, String complemento, String cidade, String cep, String escolaridade, String cargo,
@@ -25,6 +27,8 @@ public class Funcionario extends Pessoa {
         this.conta = conta;
         this.agencia = agencia;
         this.tipoDeConta = tipoDeConta;
+        this.id = contador;
+        Funcionario.contador++;
 
     }
 
@@ -76,6 +80,9 @@ public class Funcionario extends Pessoa {
     }
     public void setTipoDeConta(String tipoDeConta) {
         this.tipoDeConta = tipoDeConta;
+    }
+    public int getId(){
+        return this.id;
     }
     
     public static int adicionarFuncionario(ArrayList lista, Financeiro financeiro ,String nome, String dataNascimento, String genero, String contato, String rua, int numero,
@@ -147,5 +154,21 @@ public class Funcionario extends Pessoa {
                 }
         }
         return null;
+    }
+    
+    public static int pesquisarFuncionario(ArrayList<Funcionario> lista, Funcionario funcionario){
+        for(int i = 0; i < lista.size(); i++){
+            if(lista.get(i).getId() == funcionario.getId()){
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public static void excluirFuncionario(ArrayList<Funcionario> lista, Funcionario funcionario){
+        int i = Funcionario.pesquisarFuncionario(lista, funcionario);
+        if(i != -1){
+            lista.remove(i);
+        }
     }
 }

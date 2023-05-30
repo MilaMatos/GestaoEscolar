@@ -1,11 +1,11 @@
 package Classes;
 
+import java.util.ArrayList;
 
 public class Turma {
-    private Aluno listaAlunos[];
-    private String horario[][];
-    private Funcionario listaProf[];
-    
-    //Falta construtor - futuramente
-    
+    private ArrayList<Aluno> listaAlunos;
+    private HorarioAulas horario;
+    private ArrayList<Funcionario> listaProf;
+    private String serie;
+  
 }
