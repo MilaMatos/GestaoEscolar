@@ -2,19 +2,22 @@ package Frames;
 import Classes.Aluno;
 import Classes.Financeiro;
 import Classes.Funcionario;
+import Classes.Turma;
 import java.util.ArrayList;
 
 public class AbaInicial extends javax.swing.JFrame {
     Financeiro financeiro;
     ArrayList<Aluno> listaAlunos;
     ArrayList<Funcionario> listaFuncionario;
+    Turma primeiro;
     
-    public AbaInicial(Financeiro financeiro, ArrayList listaA, ArrayList listaF) {
+    public AbaInicial(Financeiro financeiro, ArrayList listaA, ArrayList listaF, Turma primeiro) {
         initComponents();
         this.setLocationRelativeTo(null);   //Inicializar no meio
         this.financeiro = financeiro;
         this.listaAlunos = listaA;
-        this.listaFuncionario = listaF;   
+        this.listaFuncionario = listaF;  
+        this.primeiro = primeiro;
     }
 
     /**
@@ -33,6 +36,7 @@ public class AbaInicial extends javax.swing.JFrame {
         jMenuItemCadAlu = new javax.swing.JMenuItem();
         jMenuItemPesAlu = new javax.swing.JMenuItem();
         jMenuItemNotasAlu = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         menuFuncionarios = new javax.swing.JMenu();
         jMenuItemCadFun = new javax.swing.JMenuItem();
         jMenuItemPesFun = new javax.swing.JMenuItem();
@@ -40,6 +44,11 @@ public class AbaInicial extends javax.swing.JFrame {
         menuFinanceiro = new javax.swing.JMenu();
         jMenuItemRelFin = new javax.swing.JMenuItem();
         menuTurmas = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema escolar");
@@ -87,6 +96,14 @@ public class AbaInicial extends javax.swing.JFrame {
         });
         menuAlunos.add(jMenuItemNotasAlu);
 
+        jMenuItem6.setText("Lista");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        menuAlunos.add(jMenuItem6);
+
         jMenuBar2.add(menuAlunos);
 
         menuFuncionarios.setText("Funcionários");
@@ -130,6 +147,42 @@ public class AbaInicial extends javax.swing.JFrame {
         jMenuBar2.add(menuFinanceiro);
 
         menuTurmas.setText("Turmas");
+
+        jMenuItem1.setText("1º Ano");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuTurmas.add(jMenuItem1);
+
+        jMenuItem3.setText("2º Ano");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        menuTurmas.add(jMenuItem3);
+
+        jMenuItem2.setText("3º Ano");
+        menuTurmas.add(jMenuItem2);
+
+        jMenuItem4.setText("4º Ano");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        menuTurmas.add(jMenuItem4);
+
+        jMenuItem5.setText("5º Ano");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        menuTurmas.add(jMenuItem5);
+
         jMenuBar2.add(menuTurmas);
 
         setJMenuBar(jMenuBar2);
@@ -193,6 +246,27 @@ public class AbaInicial extends javax.swing.JFrame {
         new Frames.AbaRelatorioFinanceiro(financeiro).setVisible(true);
     }//GEN-LAST:event_jMenuItemRelFinActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        new AbaExibirHorario(primeiro).setVisible(true);
+
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        new AbaListaAlunos(listaAlunos).setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -233,6 +307,12 @@ public class AbaInicial extends javax.swing.JFrame {
     private java.awt.Label TituloGestao;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItemCadAlu;
     private javax.swing.JMenuItem jMenuItemCadFun;
     private javax.swing.JMenuItem jMenuItemNotasAlu;

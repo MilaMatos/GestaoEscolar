@@ -3,9 +3,15 @@ package Classes;
 public class HorarioAulas {
 
     private String[][] horario;
+    private String[] dias = {"Segunda", "Terça", "Quarta", "Quinta", "Sexta"};
+
 
     public HorarioAulas(int numeroDias, int numeroAulas) {
         horario = new String[numeroDias][numeroAulas];
+    }
+    
+    public String[][] getHorarioAulas(){
+        return this.horario;
     }
 
     public void definirAula(int dia, int aula, String disciplina) {
@@ -27,3 +33,4 @@ public class HorarioAulas {
         }
     }
 }
+

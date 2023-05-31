@@ -206,6 +206,8 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
         jSalario2.setText(Double.toString(funcionario.getSalario()));
 
         jAgencia2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        if(funcionario.getAgencia() == -1) jAgencia2.setText("");
+        else
         jAgencia2.setText(Integer.toString(funcionario.getAgencia()));
 
         javax.swing.GroupLayout panelBancoLayout = new javax.swing.GroupLayout(panelBanco);
@@ -485,7 +487,7 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_tNomeMouseExited
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(null, "Todos os dados do funcionário serão excluídos \n\n                     Prosseguir?", "Aviso", JOptionPane.YES_NO_OPTION);
+        int opcao = JOptionPane.showConfirmDialog(null, "Todos os dados do funcionário serão excluídos \n\n                         Prosseguir?", "Aviso", JOptionPane.YES_NO_OPTION);
         if(opcao == JOptionPane.YES_OPTION){
             this.setVisible(false);
             JOptionPane.showMessageDialog(this, "Funcionário removido com sucesso", "AVISO", JOptionPane.WARNING_MESSAGE);
