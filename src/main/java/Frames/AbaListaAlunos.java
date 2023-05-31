@@ -1,6 +1,8 @@
 package Frames;
 
 import Classes.Aluno;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -11,28 +13,20 @@ public class AbaListaAlunos extends javax.swing.JFrame {
         this.lista = lista;
         initComponents();
         criarLista();
-        setLocationRelativeTo(null);   //Inicializar no meio
-        setResizable(false);        //Não mudar a configuração de do tamanho da tela
+        configTela();
+        
+        
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonVoltar2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaAlunos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        buttonVoltar2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        buttonVoltar2.setText("Voltar");
-        buttonVoltar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonVoltar2ActionPerformed(evt);
-            }
-        });
 
         tabelaAlunos.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tabelaAlunos.setModel(new javax.swing.table.DefaultTableModel(
@@ -46,6 +40,8 @@ public class AbaListaAlunos extends javax.swing.JFrame {
                 "Nome", "Matrícula"
             }
         ));
+        tabelaAlunos.setToolTipText("");
+        tabelaAlunos.setEnabled(false);
         jScrollPane1.setViewportView(tabelaAlunos);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -57,9 +53,7 @@ public class AbaListaAlunos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(buttonVoltar2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -73,18 +67,25 @@ public class AbaListaAlunos extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(buttonVoltar2)
-                .addContainerGap())
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonVoltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltar2ActionPerformed
-        dispose();
-    }//GEN-LAST:event_buttonVoltar2ActionPerformed
-
+    public void configTela(){
+        setLocationRelativeTo(null);   //Inicializar no meio
+        setResizable(false);        //Não mudar a configuração de do tamanho da tela
+        setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Procedimento personalizado a ser executado ao fechar o JFrame
+                dispose();
+            } 
+        });
+    }    
+    
     public void criarLista(){
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nome");
@@ -136,9 +137,6 @@ public class AbaListaAlunos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonVoltar;
-    private javax.swing.JButton buttonVoltar1;
-    private javax.swing.JButton buttonVoltar2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaAlunos;

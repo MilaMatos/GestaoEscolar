@@ -1,6 +1,8 @@
 package Frames;
 
 import Classes.Turma;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -10,8 +12,7 @@ public class AbaExibirHorario extends javax.swing.JFrame {
     public AbaExibirHorario(Turma turma) {
         this.turma = turma;
         initComponents();
-        setLocationRelativeTo(null);   //Inicializar no meio
-        setResizable(false);        //Não mudar a configuração de do tamanho da tela
+        configTela();
     }
 
     @SuppressWarnings("unchecked")
@@ -21,8 +22,9 @@ public class AbaExibirHorario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaHorario = new javax.swing.JTable();
         buttonEditar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jTitulo = new javax.swing.JLabel();
-        buttonVoltar3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,6 +40,7 @@ public class AbaExibirHorario extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TabelaHorario.setRowSelectionAllowed(false);
         jScrollPane1.setViewportView(TabelaHorario);
         criaTabela();
 
@@ -54,13 +57,29 @@ public class AbaExibirHorario extends javax.swing.JFrame {
         jTitulo.setFocusable(false);
         jTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        buttonVoltar3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        buttonVoltar3.setText("Voltar");
-        buttonVoltar3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonVoltar3ActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setText(turma.getSerie());
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addComponent(jTitulo)
+                .addContainerGap(118, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(jLabel1))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,31 +87,21 @@ public class AbaExibirHorario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(buttonEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonVoltar3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonEditar)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jTitulo)
-                .addGap(121, 121, 121))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTitulo)
-                .addGap(35, 35, 35)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonEditar)
-                    .addComponent(buttonVoltar3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addComponent(buttonEditar)
                 .addContainerGap())
         );
 
@@ -108,15 +117,24 @@ public class AbaExibirHorario extends javax.swing.JFrame {
                     turma.getHorario().definirAula(dia, aula, disciplina);
                 }
             }
-        }
+        }      
         JOptionPane.showMessageDialog(this, "Horário alterado", "AVISO", JOptionPane.WARNING_MESSAGE);
         dispose();
     }//GEN-LAST:event_buttonEditarActionPerformed
 
-    private void buttonVoltar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltar3ActionPerformed
-        dispose();
-    }//GEN-LAST:event_buttonVoltar3ActionPerformed
-
+    public void configTela(){
+        setLocationRelativeTo(null);   //Inicializar no meio
+        setResizable(false);        //Não mudar a configuração de do tamanho da tela
+        setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Procedimento personalizado a ser executado ao fechar o JFrame
+                dispose();
+            } 
+        });
+    }          
+    
     public void criaTabela(){
          // Obtém a matriz de strings do objeto HorarioAulas
         String[][] dadosHorario = turma.getHorario().getHorarioAulas();
@@ -166,7 +184,8 @@ public class AbaExibirHorario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TabelaHorario;
     private javax.swing.JButton buttonEditar;
-    private javax.swing.JButton buttonVoltar3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jTitulo;
     // End of variables declaration//GEN-END:variables

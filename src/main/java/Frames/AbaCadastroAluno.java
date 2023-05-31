@@ -2,6 +2,8 @@ package Frames;
 
 import Classes.Aluno;
 import Classes.Financeiro;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -14,9 +16,7 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
         initComponents();
         this.financeiro = financeiro;
         this.lista = lista;
-        this.setLocationRelativeTo(null);   //Inicializar no meio
-        setAlwaysOnTop(true);       //Iniciar na frente do outro jFrame
-        setResizable(false);        //Não mudar a configuração de do tamanho da tela
+        configTela();
     }
 
     /**
@@ -30,7 +30,6 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
 
         buttonConfirmar = new javax.swing.JButton();
         jTitulo = new javax.swing.JLabel();
-        buttonVoltar = new javax.swing.JButton();
         panelEndereco = new javax.swing.JPanel();
         jRua = new javax.swing.JLabel();
         jCidade = new javax.swing.JLabel();
@@ -74,14 +73,6 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
         jTitulo.setText("Cadastro");
         jTitulo.setFocusable(false);
         jTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        buttonVoltar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        buttonVoltar.setText("Voltar");
-        buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonVoltarActionPerformed(evt);
-            }
-        });
 
         panelEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
@@ -258,6 +249,7 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
         campSerie.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         campSerie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1º ANO", "2º ANO", "3º ANO", "4º ANO", "5º ANO", "Selecione" }));
         campSerie.setSelectedIndex(5);
+        campSerie.setToolTipText("");
         campSerie.setMinimumSize(new java.awt.Dimension(63, 22));
         campSerie.setPreferredSize(new java.awt.Dimension(65, 22));
         campSerie.addActionListener(new java.awt.event.ActionListener() {
@@ -369,14 +361,9 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(buttonConfirmar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonVoltar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jCampoObrigatorio)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(buttonConfirmar)
+                    .addComponent(jCampoObrigatorio))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,15 +377,26 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jCampoObrigatorio)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonConfirmar)
-                    .addComponent(buttonVoltar))
+                .addComponent(buttonConfirmar)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void configTela(){
+        setLocationRelativeTo(null);   //Inicializar no meio
+        setResizable(false);        //Não mudar a configuração de do tamanho da tela
+        setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Procedimento personalizado a ser executado ao fechar o JFrame
+                dispose();
+            } 
+        });
+    }
+    
     private void setNull(){
         campNome.setText(null);
         campGenero.setSelectedIndex(2);
@@ -443,10 +441,6 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
                 break;
         }
     }//GEN-LAST:event_buttonConfirmarActionPerformed
-
-    private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
-        setVisible(false);
-    }//GEN-LAST:event_buttonVoltarActionPerformed
 
     private void campCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campCidadeActionPerformed
         // TODO add your handling code here:
@@ -528,7 +522,6 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonConfirmar;
-    private javax.swing.JButton buttonVoltar;
     private javax.swing.JTextField campBairro;
     private javax.swing.JFormattedTextField campCep;
     private javax.swing.JTextField campCidade;

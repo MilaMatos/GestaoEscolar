@@ -2,6 +2,8 @@ package Frames;
 
 import Classes.Aluno;
 import Classes.Financeiro;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -15,8 +17,7 @@ public class AbaExibirAluno extends javax.swing.JFrame {
         this.lista = lista;
         this.financeiro = financeiro;
         initComponents();
-        setLocationRelativeTo(null);   //Inicializar no meio
-        setResizable(false);        //Não mudar a configuração de do tamanho da tela
+        configTela();
     }
 
     @SuppressWarnings("unchecked")
@@ -24,7 +25,6 @@ public class AbaExibirAluno extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        buttonVoltar = new javax.swing.JButton();
         jTitulo = new javax.swing.JLabel();
         panelEndereço = new javax.swing.JPanel();
         jComplemento = new javax.swing.JLabel();
@@ -60,14 +60,6 @@ public class AbaExibirAluno extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        buttonVoltar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        buttonVoltar.setText("Voltar");
-        buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonVoltarActionPerformed(evt);
-            }
-        });
 
         jTitulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jTitulo.setText("Exibir");
@@ -229,41 +221,36 @@ public class AbaExibirAluno extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelInfoLayout.createSequentialGroup()
-                        .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelInfoLayout.createSequentialGroup()
-                                .addComponent(jGenero)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jGenero2))
-                            .addGroup(panelInfoLayout.createSequentialGroup()
-                                .addComponent(jSerie)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSerie2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelInfoLayout.createSequentialGroup()
-                                .addComponent(jContato)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jContato2))
-                            .addGroup(panelInfoLayout.createSequentialGroup()
-                                .addComponent(jData)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jData2)))
-                        .addGap(40, 40, 40))
+                        .addComponent(jGenero)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jGenero2))
                     .addGroup(panelInfoLayout.createSequentialGroup()
-                        .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelInfoLayout.createSequentialGroup()
-                                .addComponent(jResponsavel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jResponsavel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jMatricula)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jMatricula2))
-                            .addGroup(panelInfoLayout.createSequentialGroup()
-                                .addComponent(jNome)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jNome2)))
-                        .addContainerGap(87, Short.MAX_VALUE))))
+                        .addComponent(jSerie)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSerie2))
+                    .addGroup(panelInfoLayout.createSequentialGroup()
+                        .addComponent(jResponsavel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jResponsavel2))
+                    .addGroup(panelInfoLayout.createSequentialGroup()
+                        .addComponent(jNome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jNome2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelInfoLayout.createSequentialGroup()
+                        .addComponent(jContato)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jContato2))
+                    .addGroup(panelInfoLayout.createSequentialGroup()
+                        .addComponent(jData)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jData2))
+                    .addGroup(panelInfoLayout.createSequentialGroup()
+                        .addComponent(jMatricula)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jMatricula2)))
+                .addGap(40, 40, 40))
         );
         panelInfoLayout.setVerticalGroup(
             panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,33 +301,30 @@ public class AbaExibirAluno extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(181, 181, 181)
-                .addComponent(jTitulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(panelInfo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(buttonEditar)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonVoltar)
+                .addComponent(jButton1)
                 .addContainerGap())
             .addComponent(panelEndereço, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTitulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(panelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelEndereço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(panelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelEndereço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonVoltar)
                     .addComponent(buttonEditar)
                     .addComponent(jButton1))
                 .addContainerGap())
@@ -349,10 +333,19 @@ public class AbaExibirAluno extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
-        dispose();
-    }//GEN-LAST:event_buttonVoltarActionPerformed
-
+        public void configTela(){
+        setLocationRelativeTo(null);   //Inicializar no meio
+        setResizable(false);        //Não mudar a configuração de do tamanho da tela
+        setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Procedimento personalizado a ser executado ao fechar o JFrame
+                dispose();
+            } 
+        });
+    }
+    
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
         dispose();
         new Frames.AbaEditarAluno(aluno, financeiro, lista).setVisible(true);
@@ -407,7 +400,6 @@ public class AbaExibirAluno extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonEditar;
-    private javax.swing.JButton buttonVoltar;
     private javax.swing.JLabel jBairro;
     private javax.swing.JLabel jBairro2;
     private javax.swing.JButton jButton1;

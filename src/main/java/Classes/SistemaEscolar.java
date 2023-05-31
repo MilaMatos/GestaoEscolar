@@ -1,7 +1,6 @@
 package Classes;
 
 import Frames.AbaInicial;
-import Frames.AbaExibirHorario;
 import java.util.ArrayList;
 
 public class SistemaEscolar {
@@ -9,61 +8,73 @@ public class SistemaEscolar {
         ArrayList<Aluno> listaAlunos = new ArrayList<>();
         ArrayList<Funcionario> listaFuncionario = new ArrayList<>();
         Financeiro geral = new Financeiro(listaAlunos, listaFuncionario);
+        ArrayList<Turma> turmas = new ArrayList<>();
         
-        Turma primeiro = new Turma("1º ANO", listaAlunos);
+        Turma pri = new Turma("1º ANO", listaAlunos);
+        Turma seg = new Turma("2º ANO", listaAlunos);
+        Turma ter = new Turma("3º ANO", listaAlunos);
+        Turma qua = new Turma("4º ANO", listaAlunos);
+        Turma qui = new Turma("5º ANO", listaAlunos);
+        turmas.add(pri);
+        turmas.add(seg);
+        turmas.add(ter);
+        turmas.add(qua);
+        turmas.add(qui);
         
+        
+    
         //Auxiliar testes
         Aluno a = new Aluno("a", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
-        Aluno b = new Aluno("ab", "", "", "", "", 2,
+            "5º ANO");
+        Aluno b = new Aluno("b", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
-        Aluno c = new Aluno("a", "", "", "", "", 2,
+            "2º ANO");
+        Aluno c = new Aluno("c", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
-        Aluno d = new Aluno("ab", "", "", "", "", 2,
+            "2º ANO");
+        Aluno d = new Aluno("d", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
-        Aluno e = new Aluno("a", "", "", "", "", 2,
+            "1º ANO");
+        Aluno e = new Aluno("e", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
-        Aluno f = new Aluno("ab", "", "", "", "", 2,
+            "2º ANO");
+        Aluno f = new Aluno("f", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
-        Aluno g = new Aluno("a", "", "", "", "", 2,
+            "3º ANO");
+        Aluno g = new Aluno("g", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
-        Aluno h = new Aluno("ab", "", "", "", "", 2,
+            "3º ANO");
+        Aluno h = new Aluno("h", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
-        Aluno i = new Aluno("ab", "", "", "", "", 2,
+            "2º ANO");
+        Aluno i = new Aluno("i", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
-        Aluno j = new Aluno("ab", "", "", "", "", 2,
+            "3º ANO");
+        Aluno j = new Aluno("j", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
-        Aluno k = new Aluno("ab", "", "", "", "", 2,
+            "1º ANO");
+        Aluno k = new Aluno("k", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
-        Aluno l = new Aluno("ab", "", "", "", "", 2,
+            "4º ANO");
+        Aluno l = new Aluno("l", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
-        Aluno m = new Aluno("ab", "", "", "", "", 2,
+            "1º ANO");
+        Aluno m = new Aluno("m", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
-        Aluno n = new Aluno("ab", "", "", "", "", 2,
+            "3º ANO");
+        Aluno n = new Aluno("n", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
-        Aluno o = new Aluno("ab", "", "", "", "", 2,
+            "1º ANO");
+        Aluno o = new Aluno("o", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
-        Aluno p = new Aluno("ab", "", "", "", "", 2,
+            "1º ANO");
+        Aluno p = new Aluno("p", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
-        Aluno q = new Aluno("ab", "", "", "", "", 2,
+            "5º ANO");
+        Aluno q = new Aluno("q", "", "", "", "", 2,
             "", "", "", "", "",
-            "");
+            "4º ANO");
         
         listaAlunos.add(a);
         listaAlunos.add(b);
@@ -86,6 +97,6 @@ public class SistemaEscolar {
         // -------------------------------------------------
         
         //new AbaExibirHorario(horario).setVisible(true);
-        new AbaInicial(geral, listaAlunos, listaFuncionario, primeiro).setVisible(true);
+        new AbaInicial(geral, listaAlunos, listaFuncionario, turmas).setVisible(true);
     }
 }

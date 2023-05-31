@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Aluno extends Pessoa implements Comparable{
     private double mensalidade;
-    private double notas;
+    private Notas nota;
     private boolean carne;
     private int matricula;
     private String responsavel;
@@ -22,6 +22,7 @@ public class Aluno extends Pessoa implements Comparable{
         this.serie = serie;
         this.mensalidade = Financeiro.verificaMensalidade(serie);
         this.matricula = contador;
+        this.nota = new Notas();
         Aluno.contador++;
     }
     
@@ -163,30 +164,12 @@ public class Aluno extends Pessoa implements Comparable{
         }
     }
     
-    @Override
+        @Override
     public int compareTo(Object arg0) {
-        Aluno aux = (Aluno) arg0;
-            if(this.matricula < aux.getMatricula()) {
-                return -1;
-            }
-            if(this.matricula > aux.getMatricula()) {
-                return 1;}
-            return 0;
-    }
-    
-    
-    
-    
-    public double getNotas() {
-        return notas;
-    }
-    public void setNotas(double notas) {
-        this.notas = notas;
-    }
-    public boolean getCarne() {
-        return carne;
-    }
-    public void setCarne(boolean carne) {
-        this.carne = carne;
+        if (arg0 instanceof Aluno) {
+            Aluno outroAluno = (Aluno) arg0;
+            return this.getNome().compareTo(outroAluno.getNome());
+        }
+        return 0;
     }
 }

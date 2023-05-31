@@ -2,6 +2,8 @@ package Frames;
 
 import Classes.Financeiro;
 import Classes.Funcionario;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -15,8 +17,7 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
         this.lista = lista;
         this.financeiro = financeiro; 
         initComponents();
-        setLocationRelativeTo(null);   //Inicializar no meio
-        setResizable(false);        //Não mudar a configuração de do tamanho da tela
+        configTela();
     }
 
     @SuppressWarnings("unchecked")
@@ -48,7 +49,6 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
         jSalario2 = new javax.swing.JLabel();
         jAgencia2 = new javax.swing.JLabel();
         jtitulo = new javax.swing.JLabel();
-        buttonVoltar = new javax.swing.JButton();
         buttonEditar = new javax.swing.JButton();
         panelInfo = new javax.swing.JPanel();
         tNome = new javax.swing.JLabel();
@@ -269,14 +269,6 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
         jtitulo.setFocusable(false);
         jtitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        buttonVoltar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        buttonVoltar.setText("Voltar");
-        buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonVoltarActionPerformed(evt);
-            }
-        });
-
         buttonEditar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         buttonEditar.setText("Editar");
         buttonEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -438,22 +430,20 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(buttonEditar)
-                        .addGap(51, 51, 51)
-                        .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonVoltar)))
-                .addContainerGap())
+                        .addComponent(jButton1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(235, 235, 235)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jtitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jtitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -462,7 +452,6 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonEditar)
-                    .addComponent(buttonVoltar)
                     .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -470,10 +459,20 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
-        dispose();
-    }//GEN-LAST:event_buttonVoltarActionPerformed
-
+        
+    public void configTela(){
+        setLocationRelativeTo(null);   //Inicializar no meio
+        setResizable(false);        //Não mudar a configuração de do tamanho da tela
+        setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Procedimento personalizado a ser executado ao fechar o JFrame
+                dispose();
+            } 
+        });
+    }
+    
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonEditarActionPerformed
@@ -533,7 +532,6 @@ public class AbaExibirFuncionario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonEditar;
-    private javax.swing.JButton buttonVoltar;
     private javax.swing.JLabel jAgencia;
     private javax.swing.JLabel jAgencia2;
     private javax.swing.JLabel jBairro;
