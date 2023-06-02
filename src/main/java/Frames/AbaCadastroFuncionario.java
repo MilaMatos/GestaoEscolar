@@ -542,10 +542,6 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
         jSelecioneCargo.setSelectedIndex(2);
     }
 
-    private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_buttonVoltarActionPerformed
-        setVisible(false);
-    }// GEN-LAST:event_buttonVoltarActionPerformed
-
     private void campCargoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_campCargoActionPerformed
         // TODO add your handling code here:
     }// GEN-LAST:event_campCargoActionPerformed

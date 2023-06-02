@@ -7,27 +7,30 @@ public class Notas {
     
     public Notas(){ 
         this.notas = new double[8];
+        for(int i = 0; i < 8; i++){
+            notas[i] = -1;
+        }
     }
     
-    public void adicionarNota(String materia, double nota) {
-        int indice = buscarIndiceMateria(materia);
-        if (indice != -1) {
-            notas[indice] = nota;
+    public void adicionarNota(int materia, double nota) {
+        if (materia != -1) {
+            notas[materia] = nota;
         } else {
             System.out.println("Matéria não encontrada!");
         }
     }
     
-    public double obterNota(String materia) {
-        int indice = buscarIndiceMateria(materia);
-        if (indice != -1) {
-            return notas[indice];
-        } else {
-            System.out.println("Matéria não encontrada!");
-            return 0.0;
+    public double obterNota(int materia) {   
+            return notas[materia];
         }
-    }
     
+    public String getMateria(int indice){
+        if(indice >= 0 && indice <= 8){
+            return this.materias[indice];
+        }
+        else return "Não existe";
+    }
+     
     private int buscarIndiceMateria(String materia) {
         for (int i = 0; i < materias.length; i++) {
             if (materias[i] != null && materias[i].equals(materia)) {

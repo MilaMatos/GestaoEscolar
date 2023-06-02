@@ -32,6 +32,7 @@ public class Turma {
     public String getSerie(){
         return this.serie;
     }
+    
     public int getQuantidadeAlunos(){
         return getListaAlunos().size();
     }

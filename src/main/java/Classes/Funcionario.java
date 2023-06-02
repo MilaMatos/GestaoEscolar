@@ -92,8 +92,14 @@ public class Funcionario extends Pessoa {
         if(verificaCampoObrigatorio(nome, cargo, salario)){
             double salarioFun = Integer.parseInt(salario);  
             if(financeiro.verificaSalario(salarioFun) != 0){
-                    Funcionario aux = new Funcionario(nome, dataNascimento, genero, contato, rua, numero, bairro, complemento, cidade, cep, escolaridade, cargo, salarioFun, cpf, banco, conta, agencia, tipoDeConta);
-                    lista.add(aux);
+                    if(cargo.equals("Professor")){
+                        Funcionario aux = new Professor(nome, dataNascimento, genero, contato, rua, numero, bairro, complemento, cidade, cep, escolaridade, cargo, salarioFun, cpf, banco, conta, agencia, tipoDeConta);
+                        lista.add(aux);
+                    }
+                    else{
+                        Funcionario aux = new Funcionario(nome, dataNascimento, genero, contato, rua, numero, bairro, complemento, cidade, cep, escolaridade, cargo, salarioFun, cpf, banco, conta, agencia, tipoDeConta);
+                        lista.add(aux);
+                    }
                     return 0;
                 }
                 else return 1;

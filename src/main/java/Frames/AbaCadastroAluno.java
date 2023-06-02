@@ -2,6 +2,7 @@ package Frames;
 
 import Classes.Aluno;
 import Classes.Financeiro;
+import Classes.Turma;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -11,11 +12,13 @@ import javax.swing.JOptionPane;
 public class AbaCadastroAluno extends javax.swing.JFrame{
     Financeiro financeiro;
     ArrayList<Aluno> lista;
+    ArrayList<Turma> turmas;
 
-    public AbaCadastroAluno(Financeiro financeiro, ArrayList lista) {
+    public AbaCadastroAluno(Financeiro financeiro, ArrayList lista, ArrayList turmas) {
         initComponents();
         this.financeiro = financeiro;
         this.lista = lista;
+        this.turmas = turmas;
         configTela();
     }
 
@@ -384,7 +387,7 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void configTela(){
+    private void configTela(){
         setLocationRelativeTo(null);   //Inicializar no meio
         setResizable(false);        //Não mudar a configuração de do tamanho da tela
         setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
@@ -428,13 +431,28 @@ public class AbaCadastroAluno extends javax.swing.JFrame{
         String cep = campCep.getText();
         String responsavel = campResponsavel.getText();
         String serie = campSerie.getItemAt(campSerie.getSelectedIndex()); //Como pegar a string selecionada com a listinha    
-                
-        switch(Aluno.adicionarAluno(lista, nome, data, genero, contato, rua, numero, bairro, complemento, cidade, cep, responsavel, serie)){
+        Turma turma = turmas.get(0);
+        switch(serie){
+            case "2º ANO":
+                turma = turmas.get(1);
+            case "3º ANO":
+                turma = turmas.get(2);
+            case "4º ANO":
+                turma = turmas.get(3);
+            case "5º ANO":
+                turma = turmas.get(4);
+        }
+        
+        
+        switch(Aluno.adicionarAluno(lista, nome, data, genero, contato, rua, numero, bairro, complemento, cidade, cep, responsavel, serie, financeiro, turma)){
             case -1: 
                 JOptionPane.showMessageDialog(this, "Campo obrigatório em branco", "AVISO", JOptionPane.WARNING_MESSAGE);
                 break;
             case 1: 
                 JOptionPane.showMessageDialog(this, "O aluno não possui idade suficiente para cursar o " +serie, "AVISO", JOptionPane.WARNING_MESSAGE);
+                break;
+            case -2:
+                JOptionPane.showMessageDialog(this, serie+" já está com a lotação máxima", "AVISO", JOptionPane.WARNING_MESSAGE);
                 break;
             case 0: 
                 setNull();

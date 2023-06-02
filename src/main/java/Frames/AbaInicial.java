@@ -2,6 +2,7 @@ package Frames;
 import Classes.Aluno;
 import Classes.Financeiro;
 import Classes.Funcionario;
+import Classes.Professor;
 import Classes.Turma;
 import java.util.ArrayList;
 
@@ -200,6 +201,11 @@ public class AbaInicial extends javax.swing.JFrame {
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Professores");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         menuTurmas.add(jMenu1);
@@ -235,7 +241,7 @@ public class AbaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemCadAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadAluActionPerformed
-        AbaCadastroAluno abaCadastroAluno = new AbaCadastroAluno(financeiro, listaAlunos);
+        AbaCadastroAluno abaCadastroAluno = new AbaCadastroAluno(financeiro, listaAlunos, turmas);
         abaCadastroAluno.setVisible(true);
     }//GEN-LAST:event_jMenuItemCadAluActionPerformed
 
@@ -252,7 +258,7 @@ public class AbaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemPesFunActionPerformed
 
     private void jMenuItemProfFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProfFunActionPerformed
-        // TODO add your handling code here:
+        new AbaExibirProfessores(listaFuncionario).setVisible(true);
     }//GEN-LAST:event_jMenuItemProfFunActionPerformed
 
     private void jMenuItemRelFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelFinActionPerformed
@@ -295,6 +301,10 @@ public class AbaInicial extends javax.swing.JFrame {
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButtonSairActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        new AbaExibirMateriasProf(Professor.getListaProf(listaFuncionario), "1º ANO").setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments

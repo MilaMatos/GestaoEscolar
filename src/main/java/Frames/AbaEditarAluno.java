@@ -397,7 +397,7 @@ public class AbaEditarAluno extends javax.swing.JFrame {
         String responsavel = campoResponsavel.getText();
         String serie = campSerie.getItemAt(campSerie.getSelectedIndex()); //Como pegar a string selecionada com a listinha    
 
-        switch(aluno.editarAluno(nome, data, genero, contato, rua, numero, bairro, complemento, cidade, cep, responsavel, serie)){
+        switch(aluno.editarAluno(nome, data, genero, contato, rua, numero, bairro, complemento, cidade, cep, responsavel, serie, financeiro)){
             case -1: 
                 JOptionPane.showMessageDialog(this, "Campo obrigatório em branco", "AVISO", JOptionPane.WARNING_MESSAGE);
                 break;

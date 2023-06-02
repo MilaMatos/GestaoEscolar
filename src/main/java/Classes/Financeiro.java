@@ -11,19 +11,37 @@ public class Financeiro {
         listaReceitas = alunos;
     }
 
-    public static double verificaMensalidade(String serie) {
-        if (serie == "1º ANO")
-            return 100;
-        if (serie == "2º ANO")
-            return 200;
-        if (serie == "3º ANO")
-            return 300;
-        if (serie == "4º ANO")
-            return 400;
-        if (serie == "5º ANO")
-            return 500;
-        return 0;
-    }
+    public double verificaMensalidade(String serie, String responsavel) {
+        double mensalidade = 0;
+
+        switch (serie) {
+            case "1º ANO":
+                mensalidade = 100;
+                break;
+            case "2º ANO":
+                mensalidade = 200;
+                break;
+            case "3º ANO":
+                mensalidade = 300;
+                break;
+            case "4º ANO":
+                mensalidade = 400;
+                break;
+            case "5º ANO":
+                mensalidade = 500;
+                break;
+            default:
+                break;
+        }
+
+        for (Funcionario aux : listaDespesas) {
+            if (aux.getNome().equals(responsavel)) {
+                return mensalidade / 2;
+            }
+        }
+
+        return mensalidade;
+}
 
     public double verificaSalario(double salario) {
         if (salario >= 100 && salario <= 2000)

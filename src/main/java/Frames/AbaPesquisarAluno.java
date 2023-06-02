@@ -177,9 +177,20 @@ public class AbaPesquisarAluno extends javax.swing.JFrame {
         //Vai pesquisar novamente, agora exatamente o nome passado(o nome selecionado) e abrir uma nova aba para exibir as informações
         for(int i = 0; i < lista.size(); i++){
             if(lista.get(i).getNome().equals(jLista.getSelectedValue())){
-                new Frames.AbaExibirAluno(lista.get(i), financeiro, lista).setVisible(true);
-                dispose();
-                break;
+
+                String[] opcoes = { "Informações", "Boletim" };
+
+                int escolha = JOptionPane.showOptionDialog(null, "Escolha uma opção", "AVISO",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[0]);
+
+                if (escolha == 0) {
+                    new Frames.AbaExibirAluno(lista.get(i), financeiro, lista).setVisible(true);
+                    
+                    break;
+                } else if (escolha == 1) {
+                    new AbaNotas(lista.get(i)).setVisible(true);
+                    
+                }
             }
         }
             }//GEN-LAST:event_jListaMouseClicked
