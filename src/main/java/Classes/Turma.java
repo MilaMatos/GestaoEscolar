@@ -7,13 +7,11 @@ public class Turma {
     private HorarioAulas horario;
     private ArrayList<Funcionario> listaProf;
     private String serie;
-    private int qtdAlunos;
     
     public Turma(String serie, ArrayList<Aluno> listaAlunos){
         this.serie = serie;
         this.horario = new HorarioAulas(5,5);
         this.listaAlunos = listaAlunos;
-        this.qtdAlunos = 0;
     }
     
     public ArrayList<Aluno> getListaAlunos(){
@@ -25,7 +23,6 @@ public class Turma {
                 cont++;
             }
         }
-        this.qtdAlunos = cont;
         return aux;
     }
     
