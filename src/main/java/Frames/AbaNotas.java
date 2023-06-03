@@ -64,7 +64,7 @@ public class AbaNotas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(notas);
 
-        salvar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        salvar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         salvar.setText("Salvar");
         salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
