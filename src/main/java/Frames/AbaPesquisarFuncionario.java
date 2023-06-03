@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class AbaPesquisarFuncionario extends javax.swing.JFrame {
-    ArrayList<Funcionario> lista;
-    Financeiro financeiro;
-
+    private ArrayList<Funcionario> lista;
+    private Financeiro financeiro;
+    
     public AbaPesquisarFuncionario(ArrayList lista, Financeiro financeiro) {
         this.lista = lista;
         this.financeiro = financeiro;
@@ -38,11 +38,6 @@ public class AbaPesquisarFuncionario extends javax.swing.JFrame {
         jNome.setText("Nome:");
 
         campNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        campNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campNomeActionPerformed(evt);
-            }
-        });
 
         jLista.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLista.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -107,7 +102,7 @@ public class AbaPesquisarFuncionario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void configTela(){
+    private void configTela(){
         setLocationRelativeTo(null);   //Inicializar no meio
         setResizable(false);        //Não mudar a configuração de do tamanho da tela
         setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
@@ -120,14 +115,10 @@ public class AbaPesquisarFuncionario extends javax.swing.JFrame {
         });
     }
     
-    private void campNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campNomeActionPerformed
-
-    }//GEN-LAST:event_campNomeActionPerformed
-
     private void jListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaMouseClicked
         for(int i = 0; i < lista.size(); i++){
             if(lista.get(i).getNome().equals(jLista.getSelectedValue())){
-                new Frames.AbaExibirFuncionario(lista.get(i), financeiro, lista).setVisible(true);
+                new Frames.AbaExibirFuncionario(lista.get(i),financeiro ,lista).setVisible(true);
                 dispose();
                 break;
             }
@@ -136,7 +127,6 @@ public class AbaPesquisarFuncionario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String aux = campNome.getText();
-
         //Pesquisar(Verificar) se os nomes que estão na lista COMEÇAM pela string passada
         ArrayList<String> listaAux = new ArrayList<>();
         for (int i = 0; i < lista.size(); i++) {
@@ -144,57 +134,18 @@ public class AbaPesquisarFuncionario extends javax.swing.JFrame {
                 listaAux.add(lista.get(i).getNome());
             }
         }
-
         //passando os nomes para a jList (elemento do design)
         jLista.setModel(new javax.swing.AbstractListModel<String>() {
             public int getSize() { return listaAux.size(); }
             public String getElementAt(int i) { return listaAux.get(i); }
         });
-
-        //Se a lista não estiver vazia (achou pelo menos um aluno) vai exibir a lista com os nomes, senão vai exibir a mensagem de "erro"
         if (!listaAux.isEmpty()) {
             jLista.setVisible(true);
         }
         else{
             JOptionPane.showMessageDialog(this, "Funcionario não encontrado", "AVISO", JOptionPane.WARNING_MESSAGE);
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AbaPesquisarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AbaPesquisarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AbaPesquisarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AbaPesquisarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new AbaPesquisarFuncionario().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField campNome;

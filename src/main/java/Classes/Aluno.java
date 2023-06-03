@@ -1,16 +1,13 @@
 package Classes;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
-public class Aluno extends Pessoa implements Comparable{
+public class Aluno extends Pessoa{
     private double mensalidade;
     private Notas notas[];
-    private boolean carne;
     private int matricula;
     private String responsavel;
     private String serie;
-
     
     private static int contador = 202300;
 
@@ -88,7 +85,6 @@ public class Aluno extends Pessoa implements Comparable{
         }
         return -1;                
     }
-    
     //Cria e adiciona o aluno na lista passada (Após as verificações de campos obrigatórios e idade)
     public static int adicionarAluno(ArrayList lista,String nome, String data, String genero, String contato, String rua, int numero,
             String bairro, String complemento, String cidade, String cep, String responsavel,
@@ -98,7 +94,6 @@ public class Aluno extends Pessoa implements Comparable{
                 if(Aluno.validarLotacao(turma)){
                     Aluno aux = new Aluno(nome, data, genero, contato, rua, numero, bairro, complemento, cidade, cep, responsavel, serie, financeiro);
                     lista.add(aux);
-                    Collections.sort(lista);
                     return 0;
                 }
                 else return -2;
@@ -108,12 +103,8 @@ public class Aluno extends Pessoa implements Comparable{
         return -1;
     }                                               
 
-    
     public static boolean verificaCampoObrigatorio(String nome, String serie, String responsavel, String data){
-        if( (nome.isBlank()) || (serie.equals("Selecione")) || (responsavel.isBlank()) || (data.equals("  /  /    ")) ){
-            return false;
-        }
-        else return true;
+        return !((nome.isBlank()) || (serie.equals("Selecione")) || (responsavel.isBlank()) || (data.equals("  /  /    ")));
     }
 
     public static boolean validarIdade(String data, String serie){  
@@ -149,8 +140,7 @@ public class Aluno extends Pessoa implements Comparable{
     }
     
     public static boolean validarLotacao(Turma turma){
-        if(turma.getQuantidadeAlunos() >= 20) return false;
-        return true;
+        return turma.getQuantidadeAlunos() < 20;
     }
     
     public static Aluno pesquisarAluno(ArrayList<Aluno> lista, String nome){
@@ -187,15 +177,5 @@ public class Aluno extends Pessoa implements Comparable{
             media += this.getNotas(i).obterNota(materia);
         }
         return media/4;
-    }
-
-    
-        @Override
-    public int compareTo(Object arg0) {
-        if (arg0 instanceof Aluno) {
-            Aluno outroAluno = (Aluno) arg0;
-            return this.getNome().compareTo(outroAluno.getNome());
-        }
-        return 0;
     }
 }

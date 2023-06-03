@@ -7,12 +7,11 @@ import Classes.Turma;
 import java.util.ArrayList;
 
 public class AbaInicial extends javax.swing.JFrame {
-    Financeiro financeiro;
-    ArrayList<Aluno> listaAlunos;
-    ArrayList<Funcionario> listaFuncionario;
-    ArrayList<Turma> turmas;
-    
-    
+    private Financeiro financeiro;
+    private ArrayList<Aluno> listaAlunos;
+    private ArrayList<Funcionario> listaFuncionario;
+    private ArrayList<Turma> turmas;
+       
     public AbaInicial(Financeiro financeiro, ArrayList listaA, ArrayList listaF, ArrayList turmas) {
         initComponents();
         this.setLocationRelativeTo(null);   //Inicializar no meio
@@ -21,7 +20,6 @@ public class AbaInicial extends javax.swing.JFrame {
         this.listaFuncionario = listaF;  
         this.turmas = turmas;
         jButtonSair.setVisible(false);
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -42,15 +40,26 @@ public class AbaInicial extends javax.swing.JFrame {
         menuFinanceiro = new javax.swing.JMenu();
         jMenuItemRelFin = new javax.swing.JMenuItem();
         menuTurmas = new javax.swing.JMenu();
-        primeiro = new javax.swing.JMenuItem();
-        segundo = new javax.swing.JMenuItem();
-        terceiro = new javax.swing.JMenuItem();
-        quarto = new javax.swing.JMenuItem();
-        quinto = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema escolar");
@@ -142,47 +151,7 @@ public class AbaInicial extends javax.swing.JFrame {
 
         menuTurmas.setText("Turmas");
 
-        primeiro.setText("1º Ano");
-        primeiro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                primeiroActionPerformed(evt);
-            }
-        });
-        menuTurmas.add(primeiro);
-
-        segundo.setText("2º Ano");
-        segundo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                segundoActionPerformed(evt);
-            }
-        });
-        menuTurmas.add(segundo);
-
-        terceiro.setText("3º Ano");
-        terceiro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                terceiroActionPerformed(evt);
-            }
-        });
-        menuTurmas.add(terceiro);
-
-        quarto.setText("4º Ano");
-        quarto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quartoActionPerformed(evt);
-            }
-        });
-        menuTurmas.add(quarto);
-
-        quinto.setText("5º Ano");
-        quinto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quintoActionPerformed(evt);
-            }
-        });
-        menuTurmas.add(quinto);
-
-        jMenu1.setText("Teste");
+        jMenu1.setText("1º Ano");
 
         jMenuItem1.setText("Horário");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -209,6 +178,118 @@ public class AbaInicial extends javax.swing.JFrame {
         jMenu1.add(jMenuItem3);
 
         menuTurmas.add(jMenu1);
+
+        jMenu2.setText("2º Ano");
+
+        jMenuItem4.setText("Horário");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem5.setText("Alunos");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        jMenuItem7.setText("Professores");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem7);
+
+        menuTurmas.add(jMenu2);
+
+        jMenu3.setText("3º Ano");
+
+        jMenuItem8.setText("Horário");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem8);
+
+        jMenuItem9.setText("Alunos");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem9);
+
+        jMenuItem10.setText("Professores");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem10);
+
+        menuTurmas.add(jMenu3);
+
+        jMenu4.setText("4º Ano");
+
+        jMenuItem11.setText("Horário");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem11);
+
+        jMenuItem12.setText("Alunos");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem12);
+
+        jMenuItem13.setText("Professores");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem13);
+
+        menuTurmas.add(jMenu4);
+
+        jMenu5.setText("5º Ano");
+
+        jMenuItem14.setText("Horário");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem14);
+
+        jMenuItem15.setText("Alunos");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem15);
+
+        jMenuItem16.setText("Professores");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem16);
+
+        menuTurmas.add(jMenu5);
 
         jMenuBar2.add(menuTurmas);
 
@@ -241,8 +322,7 @@ public class AbaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemCadAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadAluActionPerformed
-        AbaCadastroAluno abaCadastroAluno = new AbaCadastroAluno(financeiro, listaAlunos, turmas);
-        abaCadastroAluno.setVisible(true);
+        new AbaCadastroAluno(financeiro, listaAlunos, turmas).setVisible(true);
     }//GEN-LAST:event_jMenuItemCadAluActionPerformed
 
     private void jMenuItemPesAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPesAluActionPerformed
@@ -265,30 +345,9 @@ public class AbaInicial extends javax.swing.JFrame {
         new Frames.AbaRelatorioFinanceiro(financeiro).setVisible(true);
     }//GEN-LAST:event_jMenuItemRelFinActionPerformed
 
-    private void primeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primeiroActionPerformed
-        new AbaExibirHorario(turmas.get(0)).setVisible(true);
-
-    }//GEN-LAST:event_primeiroActionPerformed
-
-    private void segundoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundoActionPerformed
-        new AbaExibirHorario(turmas.get(1)).setVisible(true);
-    }//GEN-LAST:event_segundoActionPerformed
-
-    private void quartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quartoActionPerformed
-        new AbaExibirHorario(turmas.get(3)).setVisible(true);
-    }//GEN-LAST:event_quartoActionPerformed
-
-    private void quintoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quintoActionPerformed
-        new AbaExibirHorario(turmas.get(4)).setVisible(true);
-    }//GEN-LAST:event_quintoActionPerformed
-
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         new AbaListaAlunos(listaAlunos).setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-    private void terceiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terceiroActionPerformed
-        new AbaExibirHorario(turmas.get(2)).setVisible(true);
-    }//GEN-LAST:event_terceiroActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         new AbaExibirHorario(turmas.get(0)).setVisible(true);
@@ -306,51 +365,81 @@ public class AbaInicial extends javax.swing.JFrame {
         new AbaExibirMateriasProf(Professor.getListaProf(listaFuncionario), "1º ANO").setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AbaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AbaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AbaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AbaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        new AbaListaAlunos(turmas.get(2).getListaAlunos()).setVisible(true);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new AbaInicial().setVisible(true);
-            }
-        });
-    }
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        new AbaExibirMateriasProf(Professor.getListaProf(listaFuncionario), "2º ANO").setVisible(true);
+
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        new AbaExibirMateriasProf(Professor.getListaProf(listaFuncionario), "3º ANO").setVisible(true);
+
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        new AbaExibirMateriasProf(Professor.getListaProf(listaFuncionario), "4º ANO").setVisible(true);
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        new AbaExibirMateriasProf(Professor.getListaProf(listaFuncionario), "5º ANO").setVisible(true);
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+       new AbaListaAlunos(turmas.get(1).getListaAlunos()).setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        new AbaListaAlunos(turmas.get(3).getListaAlunos()).setVisible(true);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        new AbaListaAlunos(turmas.get(4).getListaAlunos()).setVisible(true);
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        new AbaExibirHorario(turmas.get(1)).setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        new AbaExibirHorario(turmas.get(2)).setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+       new AbaExibirHorario(turmas.get(3)).setVisible(true);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        new AbaExibirHorario(turmas.get(4)).setVisible(true);
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Label TituloGestao;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem jMenuItemCadAlu;
     private javax.swing.JMenuItem jMenuItemCadFun;
     private javax.swing.JMenuItem jMenuItemPesAlu;
@@ -361,10 +450,5 @@ public class AbaInicial extends javax.swing.JFrame {
     private javax.swing.JMenu menuFinanceiro;
     private javax.swing.JMenu menuFuncionarios;
     private javax.swing.JMenu menuTurmas;
-    private javax.swing.JMenuItem primeiro;
-    private javax.swing.JMenuItem quarto;
-    private javax.swing.JMenuItem quinto;
-    private javax.swing.JMenuItem segundo;
-    private javax.swing.JMenuItem terceiro;
     // End of variables declaration//GEN-END:variables
 }

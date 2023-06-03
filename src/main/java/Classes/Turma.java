@@ -32,16 +32,15 @@ public class Turma {
     public String getSerie(){
         return this.serie;
     }
-    
     public int getQuantidadeAlunos(){
         return getListaAlunos().size();
     }
     public HorarioAulas getHorario(){
         return this.horario;
     }
+    
     public void adicionarProfessor(Funcionario professor){
         this.listaProf.add(professor);
     }
-    
   
 }

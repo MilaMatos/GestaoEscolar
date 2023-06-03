@@ -2,21 +2,22 @@ package Frames;
 
 import Classes.Aluno;
 import Classes.Financeiro;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class AbaEditarAluno extends javax.swing.JFrame {
-    Aluno aluno;
-    Financeiro financeiro;
-    ArrayList<Aluno> lista;
+    private Aluno aluno;
+    private Financeiro financeiro;
+    private ArrayList<Aluno> lista;
+    
     public AbaEditarAluno(Aluno aluno, Financeiro financeiro, ArrayList<Aluno> lista) {
         this.aluno = aluno;
         this.financeiro = financeiro;
         this.lista = lista;
         initComponents();
-        setLocationRelativeTo(null);   //Inicializar no meio
-        setAlwaysOnTop(true);       //Iniciar na frente do outro jFrame
-        setResizable(false);        //Não mudar a configuração de do tamanho da tela
+        configTela();
     }
 
     @SuppressWarnings("unchecked")
@@ -33,9 +34,9 @@ public class AbaEditarAluno extends javax.swing.JFrame {
         campoCidade = new javax.swing.JTextField();
         campoRua = new javax.swing.JTextField();
         campoBairro = new javax.swing.JTextField();
-        campoNumero = new javax.swing.JTextField();
         campoComplemento = new javax.swing.JTextField();
         campoCep = new javax.swing.JFormattedTextField();
+        campN = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jNome = new javax.swing.JLabel();
         jNome1 = new javax.swing.JLabel();
@@ -49,7 +50,6 @@ public class AbaEditarAluno extends javax.swing.JFrame {
         campSerie = new javax.swing.JComboBox<>();
         campoData = new javax.swing.JFormattedTextField();
         campoContato = new javax.swing.JFormattedTextField();
-        buttonVoltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         buttonEditar = new javax.swing.JButton();
         jAviso = new javax.swing.JLabel();
@@ -82,12 +82,6 @@ public class AbaEditarAluno extends javax.swing.JFrame {
 
         campoBairro.setText(aluno.getBairro());
 
-        String num = null;
-        if(aluno.getNumero() != -1){
-            num = Integer.toString(aluno.getNumero());
-        }
-        campoNumero.setText(num);
-
         campoComplemento.setText(aluno.getComplemento());
         campoComplemento.setMinimumSize(new java.awt.Dimension(73, 20));
 
@@ -97,6 +91,14 @@ public class AbaEditarAluno extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        String num1 = null;
+        if(aluno.getNumero() != -1){
+            num1 = Integer.toString(aluno.getNumero());
+        }
+        campN.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        campN.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        campN.setText(num1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -105,29 +107,30 @@ public class AbaEditarAluno extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jNome4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoBairro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jNome5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoCidade)
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoCep, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(campoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jNome3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jNome3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoRua))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jNome4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoBairro)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoRua)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jNome5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(campoCep)
+                    .addComponent(campN)
+                    .addComponent(campoComplemento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -144,7 +147,7 @@ public class AbaEditarAluno extends javax.swing.JFrame {
                     .addComponent(jNome3)
                     .addComponent(campoRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(campoNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jNome5)
@@ -181,11 +184,6 @@ public class AbaEditarAluno extends javax.swing.JFrame {
         jLabel13.setText("Contato:");
 
         campoNome.setText(aluno.getNome());
-        campoNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoNomeActionPerformed(evt);
-            }
-        });
 
         campoResponsavel.setText(aluno.getResponsavel());
 
@@ -196,11 +194,6 @@ public class AbaEditarAluno extends javax.swing.JFrame {
         else if(aluno.getGenero() == "Feminino") index = 0;
         campGenero.setSelectedIndex(index);
         campGenero.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        campGenero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campGeneroActionPerformed(evt);
-            }
-        });
 
         campSerie.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         campSerie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1º ANO", "2º ANO", "3º ANO", "4ºANO", "5º ANO", "Selecione" }));
@@ -213,11 +206,6 @@ public class AbaEditarAluno extends javax.swing.JFrame {
         campSerie.setSelectedIndex(index2);
         campSerie.setMinimumSize(new java.awt.Dimension(63, 22));
         campSerie.setPreferredSize(new java.awt.Dimension(65, 22));
-        campSerie.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campSerieActionPerformed(evt);
-            }
-        });
 
         try {
             campoData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -297,21 +285,9 @@ public class AbaEditarAluno extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        if(aluno.isNomeIgual("Feminino")){
-            System.out.println("oi");
-            campGenero.setSelectedIndex(1);
-        }
         String data = aluno.getDataNascimento();
         campoData.setValue(data);
         campoContato.setText(aluno.getContato());
-
-        buttonVoltar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        buttonVoltar.setText("Voltar");
-        buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonVoltarActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Editar");
@@ -340,19 +316,13 @@ public class AbaEditarAluno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(181, 181, 181)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jAviso)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buttonEditar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(buttonVoltar)))
-                .addContainerGap())
+                            .addComponent(jAviso)
+                            .addComponent(buttonEditar))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,20 +336,26 @@ public class AbaEditarAluno extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jAviso)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonVoltar)
-                    .addComponent(buttonEditar))
+                .addComponent(buttonEditar)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
-        dispose();
-        new Frames.AbaExibirAluno(aluno, financeiro, lista).setVisible(true);
-    }//GEN-LAST:event_buttonVoltarActionPerformed
-
+    private void configTela(){
+        setLocationRelativeTo(null);   //Inicializar no meio
+        setResizable(false);        //Não mudar a configuração de do tamanho da tela
+        setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Procedimento personalizado a ser executado ao fechar o JFrame
+                dispose();
+            } 
+        });
+    }    
+    
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
         String nome = campoNome.getText();
         String data = campoData.getText();
@@ -387,8 +363,9 @@ public class AbaEditarAluno extends javax.swing.JFrame {
         String contato = campoContato.getText();
         String rua = campoRua.getText();
         int numero = -1;
-        if(!campoNumero.getText().isBlank()){
-            numero = Integer.parseInt(campoNumero.getText());
+        if(!campN.getText().isBlank()){
+            numero = Integer.parseInt(campN.getText());
+            if(numero <= -1) numero = -1;
         }
         String bairro = campoBairro.getText();
         String complemento = campoComplemento.getText();
@@ -411,57 +388,10 @@ public class AbaEditarAluno extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonEditarActionPerformed
 
-    private void campoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoNomeActionPerformed
-
-    private void campGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campGeneroActionPerformed
-
-    }//GEN-LAST:event_campGeneroActionPerformed
-
-    private void campSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campSerieActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campSerieActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AbaEditarAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AbaEditarAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AbaEditarAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AbaEditarAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new AbaEditarAluno().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonEditar;
-    private javax.swing.JButton buttonVoltar;
     private javax.swing.JComboBox<String> campGenero;
+    private javax.swing.JFormattedTextField campN;
     private javax.swing.JComboBox<String> campSerie;
     private javax.swing.JTextField campoBairro;
     private javax.swing.JFormattedTextField campoCep;
@@ -470,7 +400,6 @@ public class AbaEditarAluno extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField campoContato;
     private javax.swing.JFormattedTextField campoData;
     private javax.swing.JTextField campoNome;
-    private javax.swing.JTextField campoNumero;
     private javax.swing.JTextField campoResponsavel;
     private javax.swing.JTextField campoRua;
     private javax.swing.JLabel jAviso;

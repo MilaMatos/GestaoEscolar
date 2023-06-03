@@ -5,11 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Professor extends Funcionario{
-    //private String[] materias;
-    //private Map<String, Map> serie;
     private Map<String, String[]> serieMaterias;
     
-       
     public Professor(String nome, String dataNascimento, String genero, String contato, String rua, int numero,
             String bairro, String complemento, String cidade, String cep, String escolaridade, String cargo,
             double salario, String cpf, String banco, String conta, int agencia, String tipoDeConta){
@@ -19,13 +16,6 @@ public class Professor extends Funcionario{
     
     public void adicionarMaterias(String serie, String[] materias) {
         serieMaterias.put(serie, materias);
-    }
-
-    public boolean verificaMateria(ArrayList<Professor> lista, String serie, String materia){
-        for(int i = 0; i < lista.size(); i++){
-            //if(lista.get(i))
-        }
-        return true;
     }
 
     public Map<String, String[]> getSerieMaterias(){

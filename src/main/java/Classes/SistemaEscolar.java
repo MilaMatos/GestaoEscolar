@@ -7,7 +7,7 @@ public class SistemaEscolar {
     public static void main(String[] args) {
         ArrayList<Aluno> listaAlunos = new ArrayList<>();
         ArrayList<Funcionario> listaFuncionario = new ArrayList<>();
-        ArrayList<Professor> listaProf = new ArrayList<>();
+        //ArrayList<Professor> listaProf = new ArrayList<>();
         Financeiro geral = new Financeiro(listaAlunos, listaFuncionario);
         ArrayList<Turma> turmas = new ArrayList<>();
         
@@ -22,7 +22,7 @@ public class SistemaEscolar {
         turmas.add(qua);
         turmas.add(qui);
         
-        Professor teste = new Professor("preto", "", "", "", "", 0,
+        /*Professor teste = new Professor("preto", "", "", "", "", 0,
             "", "", "", "", "", "",
             700.00, "", "", "", 0, "");
         listaFuncionario.add(teste);
@@ -114,7 +114,7 @@ public class SistemaEscolar {
         listaAlunos.add(s);
         listaAlunos.add(t);
         listaAlunos.add(u);
-        
+        */
         
         // -------------------------------------------------
         new AbaInicial(geral, listaAlunos, listaFuncionario, turmas).setVisible(true);

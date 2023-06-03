@@ -27,6 +27,7 @@ public class AbaNotas extends javax.swing.JFrame {
         salvar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         nome = new javax.swing.JLabel();
+        serie = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +78,9 @@ public class AbaNotas extends javax.swing.JFrame {
         nome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         nome.setText("Aluno: nome do aluno");
 
+        serie.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        serie.setText("Série: seriado");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,23 +95,27 @@ public class AbaNotas extends javax.swing.JFrame {
                         .addGap(0, 10, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(nome)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(195, 195, 195))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nome)
+                    .addComponent(serie))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(5, 5, 5)
+                .addComponent(serie)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nome)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(salvar)
@@ -127,14 +135,12 @@ public class AbaNotas extends javax.swing.JFrame {
                         model.setValueAt(nota, indice, bimestre + 1);
                     }
                 }
-
                 // Calcula a média final e define na célula correspondente
                 double mediaFinal = aluno.calcularMediaFinal(indice);
                 if(mediaFinal >= 0){
                     model.setValueAt(mediaFinal, indice, 5);
                 }
             }
-
         //Se o valor inserido for maior que 10 estabelece o valor para 10
         notas.getModel().addTableModelListener(new TableModelListener() {
         @Override
@@ -155,13 +161,12 @@ public class AbaNotas extends javax.swing.JFrame {
             }
         }
         });
- 
     }
     
-        public void configTela(){
+    private void configTela(){
         String nomeAluno = aluno.getNome();
         nome.setText("Aluno: "+nomeAluno);
-        System.out.println(aluno.getNome());
+        serie.setText("Série: "+aluno.getSerie());
         setLocationRelativeTo(null);   //Inicializar no meio
         setResizable(false);        //Não mudar a configuração de do tamanho da tela
         setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
@@ -188,43 +193,12 @@ public class AbaNotas extends javax.swing.JFrame {
         configurarTabela();
     }//GEN-LAST:event_salvarActionPerformed
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AbaNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AbaNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AbaNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AbaNotas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new AbaNotas().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nome;
     private javax.swing.JTable notas;
     private javax.swing.JButton salvar;
+    private javax.swing.JLabel serie;
     // End of variables declaration//GEN-END:variables
 }

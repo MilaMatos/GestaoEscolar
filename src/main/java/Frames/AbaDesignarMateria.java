@@ -4,20 +4,20 @@ import Classes.Professor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 
 public class AbaDesignarMateria extends javax.swing.JFrame {
-    Professor professor;
-    ArrayList<Professor> lista;
+    private Professor professor;
+    private ArrayList<Professor> lista;
     
     public AbaDesignarMateria(Professor professor, ArrayList<Professor> lista) {
         this.professor = professor;
         this.lista = lista;
         initComponents();
-        configTela();
-        
+        configTela();       
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -111,43 +111,18 @@ public class AbaDesignarMateria extends javax.swing.JFrame {
 
         jRadioButton1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jRadioButton1.setText("1º ANO");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
 
         jRadioButton2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jRadioButton2.setText("2º ANO");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
 
         jRadioButton3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jRadioButton3.setText("3º ANO");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
-            }
-        });
 
         jRadioButton4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jRadioButton4.setText("4º ANO");
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
-            }
-        });
 
         jRadioButton5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jRadioButton5.setText("5º ANO");
-        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton5ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -229,8 +204,8 @@ public class AbaDesignarMateria extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void configTela(){
-        setLocationRelativeTo(null);   //Inicializar no meio
+    private void configTela(){
+        setLocationRelativeTo(null);        //Inicializar no meio
         setResizable(false);        //Não mudar a configuração de do tamanho da tela
         setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -241,131 +216,30 @@ public class AbaDesignarMateria extends javax.swing.JFrame {
             } 
         });
     }
-    
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
-
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
-
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
-
-    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
-
-    }//GEN-LAST:event_jRadioButton5ActionPerformed
-
-    private void setNull(){
-        jComboBox1.setSelectedIndex(8);
-        jComboBox6.setSelectedIndex(8);
-        jComboBox7.setSelectedIndex(8);
-        jComboBox8.setSelectedIndex(8);
-        jComboBox9.setSelectedIndex(8);
-    
-    }
-    
+   
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String serie;
-        String materia;
-        if(jRadioButton1.isSelected()){
-            serie = "1º ANO";
-            if(jComboBox1.getSelectedIndex() != 8){
-                materia = jComboBox1.getItemAt(jComboBox1.getSelectedIndex());
-                if(professor.adicionarMateriaParaSerie(lista, professor, serie, materia)){
-                    System.out.println("Matéria " + materia + " adicionada para a série " + serie);
-                    jComboBox1.setSelectedIndex(8);
+        String[] series = {"1º ANO", "2º ANO", "3º ANO", "4º ANO", "5º ANO"};
+        JRadioButton[] radioButtons = {jRadioButton1, jRadioButton2, jRadioButton3, jRadioButton4, jRadioButton5};
+        JComboBox[] comboBoxes = {jComboBox1, jComboBox6, jComboBox7, jComboBox8, jComboBox9};
 
-                }
-                else JOptionPane.showMessageDialog(this, "Matéria: "+serie+"\nSérie: "+serie+"\nJá está designada para um professor", "AVISO", JOptionPane.WARNING_MESSAGE);
-            }
-        }
-        if(jRadioButton2.isSelected()){
-            serie = "2º ANO";
-            if(jComboBox6.getSelectedIndex() != 8){
-                materia = jComboBox6.getItemAt(jComboBox6.getSelectedIndex());
-                if(professor.adicionarMateriaParaSerie(lista, professor, serie, materia)){
-                    System.out.println("Matéria " + materia + " adicionada para a série " + serie);
-                    jComboBox6.setSelectedIndex(8);
-                }
-                else JOptionPane.showMessageDialog(this, "Matéria: "+serie+"\nSérie: "+serie+"\nJá está designada para um professor", "AVISO", JOptionPane.WARNING_MESSAGE);
+        for (int i = 0; i < radioButtons.length; i++) {
+            if (radioButtons[i].isSelected()) {
+                String serie = series[i];
+                JComboBox comboBox = comboBoxes[i];
 
+                String materia = comboBox.getSelectedItem().toString();
+                if (!materia.equals("")) {
+                    int opcao = JOptionPane.showConfirmDialog(null, "Essa ação não poderá ser desfeita \n\n                Prosseguir?", "Aviso", JOptionPane.YES_NO_OPTION);
+                    if(opcao == JOptionPane.YES_OPTION){
+                        if (!professor.adicionarMateriaParaSerie(lista, professor, serie, materia)) {
+                            JOptionPane.showMessageDialog(this, "Matéria: " + materia + "\nSérie: " + serie + "\nJá está designada para um professor", "AVISO", JOptionPane.WARNING_MESSAGE);
+                        }
+                    }
+                    comboBox.setSelectedIndex(8);
+                }
             }
         }
-        if(jRadioButton3.isSelected()){
-            serie = "3º ANO";
-            if(jComboBox7.getSelectedIndex() != 8){
-                materia = jComboBox7.getItemAt(jComboBox7.getSelectedIndex());
-                if(professor.adicionarMateriaParaSerie(lista, professor, serie, materia)){
-                    System.out.println("Matéria " + materia + " adicionada para a série " + serie);
-                    jComboBox7.setSelectedIndex(8);
-                }
-                else JOptionPane.showMessageDialog(this, "Matéria: "+serie+"\nSérie: "+serie+"\nJá está designada para um professor", "AVISO", JOptionPane.WARNING_MESSAGE);
-            }
-        }
-        if(jRadioButton4.isSelected()){
-            serie = "4º ANO";
-            if(jComboBox8.getSelectedIndex() != 8){
-                materia = jComboBox8.getItemAt(jComboBox8.getSelectedIndex());
-                if(professor.adicionarMateriaParaSerie(lista, professor, serie, materia)){
-                    System.out.println("Matéria " + materia + " adicionada para a série " + serie);
-                    jComboBox8.setSelectedIndex(8);
-                }
-                else JOptionPane.showMessageDialog(this, "Matéria: "+serie+"\nSérie: "+serie+"\nJá está designada para um professor", "AVISO", JOptionPane.WARNING_MESSAGE);
-            }
-        }
-        if(jRadioButton5.isSelected()){
-            serie = "5º ANO";
-            if(jComboBox9.getSelectedIndex() != 8){
-                materia = jComboBox9.getItemAt(jComboBox9.getSelectedIndex());
-                if(professor.adicionarMateriaParaSerie(lista, professor, serie, materia)){
-                    System.out.println("Matéria " + materia + " adicionada para a série " + serie);
-                    jComboBox9.setSelectedIndex(8);
-                }
-                else JOptionPane.showMessageDialog(this, "Matéria: "+serie+"\nSérie: "+serie+"\nJá está designada para um professor", "AVISO", JOptionPane.WARNING_MESSAGE);
-            }
-        }        
-        
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AbaDesignarMateria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AbaDesignarMateria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AbaDesignarMateria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AbaDesignarMateria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new AbaDesignarMateria().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

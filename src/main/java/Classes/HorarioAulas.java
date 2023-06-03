@@ -21,16 +21,5 @@ public class HorarioAulas {
     public String obterAula(int dia, int aula) {
         return horario[dia][aula];
     }
-
-    public void imprimirHorario() {
-        for (int dia = 0; dia < horario.length; dia++) {
-            System.out.println("Dia " + (dia + 1) + ":");
-            for (int aula = 0; aula < horario[dia].length; aula++) {
-                String disciplina = horario[dia][aula];
-                System.out.println("Aula " + (aula + 1) + ": " + disciplina);
-            }
-            System.out.println();
-        }
-    }
 }
 

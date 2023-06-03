@@ -30,14 +30,5 @@ public class Notas {
         }
         else return "Não existe";
     }
-     
-    private int buscarIndiceMateria(String materia) {
-        for (int i = 0; i < materias.length; i++) {
-            if (materias[i] != null && materias[i].equals(materia)) {
-                return i;
-            }
-        }
-        return -1;
-    }
 
 }

@@ -4,25 +4,39 @@ import Classes.Financeiro;
 import Classes.Funcionario;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public class AbaCadastroFuncionario extends javax.swing.JFrame {
-    private Financeiro financeiro;
+public class AbaEditarFuncionario extends javax.swing.JFrame {
+    private Funcionario funcionario;
     private ArrayList<Funcionario> lista;
-
-    public AbaCadastroFuncionario(Financeiro financeiro, ArrayList lista) {
+    private Financeiro financeiro;
+    
+    public AbaEditarFuncionario(Funcionario funcionario, ArrayList lista, Financeiro financeiro) {
         initComponents();
-        this.financeiro = financeiro;
+        this.funcionario = funcionario;
         this.lista = lista;
+        this.financeiro = financeiro;
+        info();
         configTela();
-        campCargo.setVisible(false);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelBanco = new javax.swing.JPanel();
+        jTipoConta = new javax.swing.JLabel();
+        campTipoConta = new javax.swing.JComboBox<>();
+        campConta = new javax.swing.JTextField();
+        jAgencia = new javax.swing.JLabel();
+        tMensalidade1 = new javax.swing.JLabel();
+        campSalario = new javax.swing.JTextField();
+        jConta = new javax.swing.JLabel();
+        jBanco = new javax.swing.JLabel();
+        campBanco = new javax.swing.JTextField();
+        campAgencia = new javax.swing.JFormattedTextField();
+        jLabel1 = new javax.swing.JLabel();
         jtitulo = new javax.swing.JLabel();
         buttonConfirmar = new javax.swing.JButton();
         panelInfo = new javax.swing.JPanel();
@@ -39,7 +53,6 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
         campEscolaridade = new javax.swing.JComboBox<>();
         campCpf = new javax.swing.JFormattedTextField();
         tSerie = new javax.swing.JLabel();
-        jSelecioneCargo = new javax.swing.JComboBox<>();
         campCargo = new javax.swing.JTextField();
         panelEndereco = new javax.swing.JPanel();
         jRua = new javax.swing.JLabel();
@@ -53,24 +66,99 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
         jComplemento = new javax.swing.JLabel();
         campCep = new javax.swing.JFormattedTextField();
         jNum = new javax.swing.JLabel();
-        campN1 = new javax.swing.JFormattedTextField();
-        panelBanco = new javax.swing.JPanel();
-        jTipoConta = new javax.swing.JLabel();
-        campTipoConta = new javax.swing.JComboBox<>();
-        campConta = new javax.swing.JTextField();
-        jAgencia = new javax.swing.JLabel();
-        tMensalidade1 = new javax.swing.JLabel();
-        campSalario = new javax.swing.JTextField();
-        jConta = new javax.swing.JLabel();
-        jBanco = new javax.swing.JLabel();
-        campBanco = new javax.swing.JTextField();
-        campAgencia1 = new javax.swing.JFormattedTextField();
-        jLabel1 = new javax.swing.JLabel();
+        campN = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        panelBanco.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados bancários", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+
+        jTipoConta.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jTipoConta.setText("Tipo da Conta:");
+
+        campTipoConta.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        campTipoConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Corrente", "Poupança", "Salário", "Selecione" }));
+        campTipoConta.setSelectedIndex(3);
+
+        jAgencia.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jAgencia.setText("Agência:");
+
+        tMensalidade1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        tMensalidade1.setForeground(new java.awt.Color(150, 20, 20));
+        tMensalidade1.setText("Salário: ");
+
+        campSalario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        jConta.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jConta.setText("Conta:");
+
+        jBanco.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jBanco.setText("Banco:");
+
+        campBanco.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        campAgencia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        campAgencia.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        javax.swing.GroupLayout panelBancoLayout = new javax.swing.GroupLayout(panelBanco);
+        panelBanco.setLayout(panelBancoLayout);
+        panelBancoLayout.setHorizontalGroup(
+            panelBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBancoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBancoLayout.createSequentialGroup()
+                        .addGroup(panelBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelBancoLayout.createSequentialGroup()
+                                .addComponent(jConta)
+                                .addGap(12, 12, 12)
+                                .addComponent(campConta, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelBancoLayout.createSequentialGroup()
+                                .addComponent(jTipoConta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                        .addComponent(tMensalidade1)
+                        .addGap(5, 5, 5))
+                    .addGroup(panelBancoLayout.createSequentialGroup()
+                        .addComponent(jBanco)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(campBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jAgencia)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(panelBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(campSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                    .addComponent(campAgencia))
+                .addContainerGap())
+        );
+        panelBancoLayout.setVerticalGroup(
+            panelBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBancoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTipoConta)
+                    .addComponent(campTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tMensalidade1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBanco)
+                    .addComponent(campBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jAgencia)
+                    .addComponent(campAgencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jConta)
+                    .addComponent(campConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(150, 20, 20));
+        jLabel1.setText("Campo Obrigatório");
+
         jtitulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jtitulo.setText("Cadastro");
+        jtitulo.setText("Editar");
         jtitulo.setFocusable(false);
         jtitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
@@ -138,15 +226,6 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
         tSerie.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tSerie.setText("CPF:");
 
-        jSelecioneCargo.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jSelecioneCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Professor", "Outro", "Selecione" }));
-        jSelecioneCargo.setSelectedIndex(2);
-        jSelecioneCargo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jSelecioneCargoActionPerformed(evt);
-            }
-        });
-
         campCargo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout panelInfoLayout = new javax.swing.GroupLayout(panelInfo);
@@ -157,24 +236,20 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelInfoLayout.createSequentialGroup()
-                        .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelInfoLayout.createSequentialGroup()
-                                .addComponent(tGenero)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelInfoLayout.createSequentialGroup()
-                                .addComponent(tResponsavel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jSelecioneCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tGenero)
+                            .addComponent(tResponsavel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfoLayout.createSequentialGroup()
                                 .addComponent(tData)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(campDataN, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfoLayout.createSequentialGroup()
-                                .addComponent(campCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                                 .addComponent(tContato1)
                                 .addGap(7, 7, 7)
                                 .addComponent(campContato, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -210,7 +285,6 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
                     .addComponent(tContato1)
                     .addComponent(campContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tResponsavel)
-                    .addComponent(jSelecioneCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -255,8 +329,13 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
         jNum.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jNum.setText("Nº:");
 
-        campN1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        campN1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        //try{
+            campN.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+            /*} catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }*/
+        campN.setToolTipText("");
+        campN.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout panelEnderecoLayout = new javax.swing.GroupLayout(panelEndereco);
         panelEndereco.setLayout(panelEnderecoLayout);
@@ -264,8 +343,8 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
             panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEnderecoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelEnderecoLayout.createSequentialGroup()
+                .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEnderecoLayout.createSequentialGroup()
                         .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panelEnderecoLayout.createSequentialGroup()
                                 .addComponent(jCidade)
@@ -275,25 +354,21 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
                                 .addComponent(jBairro)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(campBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(158, 158, 158)
                         .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelEnderecoLayout.createSequentialGroup()
-                                .addGap(181, 181, 181)
-                                .addComponent(jNum)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campN1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEnderecoLayout.createSequentialGroup()
-                                .addGap(158, 158, 158)
-                                .addComponent(jCep)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campCep, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jNum, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jCep)))
                     .addGroup(panelEnderecoLayout.createSequentialGroup()
                         .addComponent(jRua)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                        .addGap(9, 9, 9)
-                        .addComponent(jComplemento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(campEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComplemento)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(campComplemento)
+                    .addComponent(campCep, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                    .addComponent(campN))
                 .addGap(15, 15, 15))
         );
         panelEnderecoLayout.setVerticalGroup(
@@ -309,7 +384,7 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
                 .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jNum)
-                        .addComponent(campN1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(campN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBairro)
                         .addComponent(campBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -324,93 +399,6 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelBanco.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados bancários", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
-
-        jTipoConta.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTipoConta.setText("Tipo da Conta:");
-
-        campTipoConta.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        campTipoConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Corrente", "Poupança", "Salário", "Selecione" }));
-        campTipoConta.setSelectedIndex(3);
-
-        jAgencia.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jAgencia.setText("Agência:");
-
-        tMensalidade1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        tMensalidade1.setForeground(new java.awt.Color(150, 20, 20));
-        tMensalidade1.setText("Salário: ");
-
-        campSalario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-
-        jConta.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jConta.setText("Conta:");
-
-        jBanco.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jBanco.setText("Banco:");
-
-        campBanco.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-
-        campAgencia1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        campAgencia1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-
-        javax.swing.GroupLayout panelBancoLayout = new javax.swing.GroupLayout(panelBanco);
-        panelBanco.setLayout(panelBancoLayout);
-        panelBancoLayout.setHorizontalGroup(
-            panelBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBancoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelBancoLayout.createSequentialGroup()
-                        .addGroup(panelBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelBancoLayout.createSequentialGroup()
-                                .addComponent(jConta)
-                                .addGap(12, 12, 12)
-                                .addComponent(campConta, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelBancoLayout.createSequentialGroup()
-                                .addComponent(jTipoConta)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-                        .addComponent(tMensalidade1)
-                        .addGap(5, 5, 5))
-                    .addGroup(panelBancoLayout.createSequentialGroup()
-                        .addComponent(jBanco)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(campBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jAgencia)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(panelBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campAgencia1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        panelBancoLayout.setVerticalGroup(
-            panelBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBancoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTipoConta)
-                    .addComponent(campTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tMensalidade1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBanco)
-                    .addComponent(campBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jAgencia)
-                    .addComponent(campAgencia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jConta)
-                    .addComponent(campConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(150, 20, 20));
-        jLabel1.setText("Campo Obrigatório");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -422,9 +410,8 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
                         .addComponent(panelEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panelBanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addComponent(buttonConfirmar)))
+                    .addComponent(jLabel1)
+                    .addComponent(buttonConfirmar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -451,7 +438,7 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ 
     private void configTela(){
         setLocationRelativeTo(null);   //Inicializar no meio
         setResizable(false);        //Não mudar a configuração de do tamanho da tela
@@ -465,46 +452,76 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
         });
     }
     
-    private void jSelecioneCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSelecioneCargoActionPerformed
-       if(jSelecioneCargo.getSelectedIndex() == 1){
-            campCargo.setVisible(true);
+    private void info(){
+        campNome.setText(funcionario.getNome());
+        int index = 2;
+        if(funcionario.getGenero().equals("Masculino")) index = 1;
+        else if(funcionario.getGenero().equals("Feminino")) index = 0;
+        campGenero.setSelectedIndex(index);
+        campCargo.setText(funcionario.getCargo());
+        
+        campDataN.setValue(funcionario.getDataNascimento());
+        campContato.setText(funcionario.getContato());
+        campCpf.setText(funcionario.getCpf());
+        int in = 4;
+        switch(funcionario.getEscolaridade()){
+            case "Ensino Médio Completo":
+                in = 0;
+                break;
+            case "Superior Incompleto":
+                in = 1;
+                break;
+            case "Superior Completo":
+                in = 2;
+                break;
+            case "Pós/Mestre/Doutor":
+                in = 3;     
         }
-        else campCargo.setVisible(false);
-    }//GEN-LAST:event_jSelecioneCargoActionPerformed
-
-    private void setNull() {
-        campNome.setText(null);
-        campGenero.setSelectedIndex(2);
-        campDataN.setText(null);
-        campEscolaridade.setSelectedIndex(4);
-        campContato.setText(null);
-        campEndereco.setText(null);
-        campBairro.setText(null);
-        campN1.setText(null);
-        campCep.setText(null);
-        campComplemento.setText(null);
-        campSalario.setText(null);
-        campCargo.setText(null);
-        campCidade.setText(null);
-        campCpf.setText(null);
-        campTipoConta.setSelectedIndex(3);
-        campBanco.setText(null);
-        campConta.setText(null);
-        campAgencia1.setText(null);
-        jSelecioneCargo.setSelectedIndex(2);
+        campEscolaridade.setSelectedIndex(in);
+        
+        campCidade.setText(funcionario.getCidade());
+        campBairro.setText(funcionario.getBairro());
+        campEndereco.setText(funcionario.getRua());
+        campCep.setText(funcionario.getCep());
+        String num = null;
+        if(funcionario.getNumero() != -1){
+            num = Integer.toString(funcionario.getNumero());
+        }
+        campN.setText(num);
+        campComplemento.setText(funcionario.getComplemento());
+        int con = 3;
+        switch(funcionario.getTipoDeConta()){
+            case "Corrente":
+                con = 0;
+                break;
+            case "Poupança":
+                con = 1;
+                break;
+            case "Salário":
+                con = 2;
+        }
+        campTipoConta.setSelectedIndex(con);
+        campBanco.setText(funcionario.getBanco());
+        campConta.setText(funcionario.getConta());
+        String sal = Double.toString(funcionario.getSalario());
+        campSalario.setText(sal);
+        String age = null;
+        if(funcionario.getAgencia() != -1){
+            age = Integer.toString(funcionario.getNumero());
+        }
+        campAgencia.setText(age);
+        
     }
-
-    private void buttonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {
+    
+    private void buttonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConfirmarActionPerformed
         String nome = campNome.getText();
         String data = campDataN.getText();
         String genero = campGenero.getItemAt(campGenero.getSelectedIndex());
         String contato = campContato.getText();
         String rua = campEndereco.getText();
         int numero = -1;
-        if(!campN1.getText().isBlank()){
-            numero = Integer.parseInt(campN1.getText());
-            if(numero <= -1) numero = -1;
-
+        if(!campN.getText().isBlank()){
+            numero = Integer.parseInt(campN.getText());
         }
         String bairro = campBairro.getText();
         String complemento = campComplemento.getText();
@@ -516,30 +533,31 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
         String banco = campBanco.getText();
         String cpf = campCpf.getText();
         int agencia = -1;
-        if (!campAgencia1.getText().isBlank()) {
-            agencia = Integer.parseInt(campAgencia1.getText());
+        if (!campAgencia.getText().isBlank()) {
+            agencia = Integer.parseInt(campAgencia.getText());
             if(agencia <= -1) agencia = -1;
-
         }
         String cargo = campCargo.getText();
-        if(jSelecioneCargo.getItemAt(jSelecioneCargo.getSelectedIndex()).equals("Professor")) cargo = "Professor";
-
-        switch(Funcionario.adicionarFuncionario(lista, financeiro, nome, data, genero, contato, rua, numero, bairro, complemento, cidade, cep, escolaridade, cargo, campSalario.getText(), cpf, banco, conta, agencia, tipoDeCOnta)){
+        String salario = campSalario.getText();
+        
+        switch(funcionario.editarFuncionario(financeiro,  nome,  data,  genero,  contato,  rua,  numero,
+             bairro,  complemento,  cidade,  cep,  escolaridade,  cargo,
+             salario,  cpf,  banco,  conta,  agencia, tipoDeCOnta)){
             case -1: 
                 JOptionPane.showMessageDialog(this, "Campo obrigatório em branco", "AVISO", JOptionPane.WARNING_MESSAGE);
                 break;
             case 1: 
                 JOptionPane.showMessageDialog(this, "Salário incompatível", "AVISO", JOptionPane.WARNING_MESSAGE);
                 break;
-            case 0: 
-                setNull();
-                break;
+            case 0:
+                new AbaExibirFuncionario(funcionario, financeiro, lista).setVisible(true);
+                dispose();
         }
-    }
+    }//GEN-LAST:event_buttonConfirmarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonConfirmar;
-    private javax.swing.JFormattedTextField campAgencia1;
+    private javax.swing.JFormattedTextField campAgencia;
     private javax.swing.JTextField campBairro;
     private javax.swing.JTextField campBanco;
     private javax.swing.JTextField campCargo;
@@ -553,7 +571,7 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField campEndereco;
     private javax.swing.JComboBox<String> campEscolaridade;
     private javax.swing.JComboBox<String> campGenero;
-    private javax.swing.JFormattedTextField campN1;
+    private javax.swing.JFormattedTextField campN;
     private javax.swing.JTextField campNome;
     private javax.swing.JTextField campSalario;
     private javax.swing.JComboBox<String> campTipoConta;
@@ -568,7 +586,6 @@ public class AbaCadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jNum;
     private javax.swing.JLabel jRua;
-    private javax.swing.JComboBox<String> jSelecioneCargo;
     private javax.swing.JLabel jTipoConta;
     private javax.swing.JLabel jtitulo;
     private javax.swing.JPanel panelBanco;

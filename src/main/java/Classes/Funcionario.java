@@ -3,10 +3,10 @@ package Classes;
 import java.util.ArrayList;
 
 public class Funcionario extends Pessoa {
-    private double salario; //
-    private String cargo; //
-    private String cpf; //
-    private String escolaridade; //
+    private double salario; 
+    private String cargo; 
+    private String cpf; 
+    private String escolaridade; 
     private String banco;
     private String conta;
     private int agencia;
@@ -143,7 +143,7 @@ public class Funcionario extends Pessoa {
             String salario, String cpf, String banco, String conta, int agencia, String tipoDeConta) {
             
             if(Funcionario.verificaCampoObrigatorio(nome, cargo, salario)){
-                double salarioFun = Integer.parseInt(salario);  
+                double salarioFun = Double.parseDouble(salario);  
                 if(financeiro.verificaSalario(salarioFun) != 0){
                     this.alterarInfo(nome, data, genero, contato, rua, numero, bairro, complemento, cidade, cep, escolaridade, cargo, salarioFun, cpf, banco, conta, agencia, tipoDeConta);
                     return 0;
