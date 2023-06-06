@@ -233,21 +233,24 @@ public class AbaDesignarMateria extends javax.swing.JFrame {
         JRadioButton[] radioButtons = {jRadioButton1, jRadioButton2, jRadioButton3, jRadioButton4, jRadioButton5};
         JComboBox[] comboBoxes = {jComboBox1, jComboBox6, jComboBox7, jComboBox8, jComboBox9};
 
-        for (int i = 0; i < radioButtons.length; i++) {
-            if (radioButtons[i].isSelected()) {
-                String serie = series[i];
-                JComboBox comboBox = comboBoxes[i];
+        int opcao = JOptionPane.showConfirmDialog(null, "Essa ação não poderá ser desfeita \n\n                Prosseguir?", "Aviso", JOptionPane.YES_NO_OPTION);
+        if(opcao == JOptionPane.YES_OPTION){
+            for (int i = 0; i < radioButtons.length; i++) {
 
-                String materia = comboBox.getSelectedItem().toString();
-                if (!materia.equals("")) {
-                    int opcao = JOptionPane.showConfirmDialog(null, "Essa ação não poderá ser desfeita \n\n                Prosseguir?", "Aviso", JOptionPane.YES_NO_OPTION);
-                    if(opcao == JOptionPane.YES_OPTION){
-                        if (!professor.adicionarMateriaParaSerie(lista, professor, serie, materia)) {
-                            JOptionPane.showMessageDialog(this, "Matéria: " + materia + "\nSérie: " + serie + "\nJá está designada para um professor", "AVISO", JOptionPane.WARNING_MESSAGE);
+                    if (radioButtons[i].isSelected()) {
+                        String serie = series[i];
+                        JComboBox comboBox = comboBoxes[i];
+
+                        String materia = comboBox.getSelectedItem().toString();
+                        if (!materia.equals("")) {
+
+                                if (!professor.adicionarMateriaParaSerie(lista, professor, serie, materia)) {
+                                    JOptionPane.showMessageDialog(this, "Matéria: " + materia + "\nSérie: " + serie + "\nJá está designada para um professor", "AVISO", JOptionPane.WARNING_MESSAGE);
+                                }
+
+                            comboBox.setSelectedIndex(8);
                         }
                     }
-                    comboBox.setSelectedIndex(8);
-                }
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
